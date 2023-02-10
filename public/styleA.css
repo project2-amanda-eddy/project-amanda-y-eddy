@@ -1,5 +1,6 @@
 :root {
     --transparentBlack: #000000c4;
+    --black: black;
     --white: white;
     --purple: #c5cc88;
 }
@@ -48,7 +49,7 @@ body, html {
 
 .home-food-img {
     width: 100vw;
-    height: 700px;
+    height: 600px;
     background-image: url("./images/food-home.jpeg");
     background-repeat:no-repeat;
     background-size: cover;
@@ -74,6 +75,33 @@ body, html {
         font-size: 25px;
     }
 }
+
+.animation-container {
+    width: 100vw;
+    margin: auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: var(--black);
+}
+
+.animation-text {
+    margin: 0;
+    font-size: 24px;
+    color: var(--white);
+    font-weight: bold;
+    animation-name: rightToLeft;
+    animation-duration: 7.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+@keyframes rightToLeft {
+    0% {
+      transform: translateX(100vw);
+    }
+    100% {
+      transform: translateX(-300px);
+    }
+  }
 
 .resources-container {
     background-image: url("./images/paper-bg.jpg");
