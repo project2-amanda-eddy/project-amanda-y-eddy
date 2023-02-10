@@ -4,7 +4,7 @@ const authController = require('../controllers/auth.controller');
 const authMiddleware = require('../middlewares/auth.middleware');
 
 /* Main route */
-router.get('/', (req, res, next) => res.send('Hello world'))
+router.get('/', (req, res, next) => res.render('home'))
 
 /* Auth */
 router.get('/signup', authMiddleware.isNotAuthenticated, authController.signup);
