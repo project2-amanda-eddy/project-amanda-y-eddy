@@ -23,6 +23,12 @@ body, html {
     padding: 0 7%;
 }
 
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .navbar-container h5 {
     margin: 0;
     padding: 0;
