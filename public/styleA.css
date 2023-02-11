@@ -1,0 +1,224 @@
+:root {
+    --transparentBlack: #000000c4;
+    --black: black;
+    --white: white;
+    --purple: #75628f;
+}
+
+body, html {
+    overflow-x: hidden;
+}
+
+/* NAVBAR */
+
+.navbar-container {
+    width: 100vw;
+    height: 70px;
+    background-color: var(--transparentBlack);
+    z-index: 5;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 7%;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar-container h5 {
+    margin: 0;
+    padding: 0;
+    color: var(--white);
+    font-size: 30px;
+}
+
+.nav-list {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+    list-style-type:none
+}
+
+.nav-list li {
+    padding: 0;
+    margin: 0;
+    color: var(--white);
+}
+
+/* HOME PAGE */
+
+.home-food-img {
+    width: 100vw;
+    height: 600px;
+    background-image: url("./images/food-home.jpeg");
+    background-repeat:no-repeat;
+    background-size: cover;
+    padding: 200px 0 0 7%;
+}
+
+.description-container {
+    width: 70%;
+    color: var(--white);
+}
+@media (max-width: 575px) {
+    .description-container {
+        width: 100%;
+    }
+}
+
+.description {
+    font-size: 50px;
+    margin-bottom: 40px;
+}
+@media (max-width: 575px) {
+    .description {
+        font-size: 25px;
+    }
+}
+
+.animation-container {
+    width: 100vw;
+    margin: auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: var(--black);
+}
+
+.animation-text {
+    margin: 0;
+    font-size: 24px;
+    color: var(--white);
+    font-weight: bold;
+    animation-name: rightToLeft;
+    animation-duration: 7.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+@keyframes rightToLeft {
+    0% {
+      transform: translateX(100vw);
+    }
+    100% {
+      transform: translateX(-300px);
+    }
+  }
+
+.resources-container {
+    background-image: url("./images/paper-bg.jpg");
+    background-repeat:no-repeat;
+    background-size: cover;
+    width: 100vw;
+    min-height: 350px;
+    padding: 60px 7% 40px 7%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.resources-content-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.content {
+    width: 28%;
+    margin-bottom: 15px;
+}
+@media (max-width: 575px) {
+    .content {
+        width: 100%;
+    }
+}
+
+.resources-container h3 {
+    font-size: 24px;
+    text-align: center;
+}
+
+.resources-container h5 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.resources-container p {
+    font-size: 18px;
+}
+
+/* BUTTON */
+
+.button-52 {
+  font-size: 16px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  padding: 13px 20px 13px;
+  outline: 0;
+  border: 1px solid black;
+  cursor: pointer;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  color: white;
+}
+
+.button-52:after {
+  content: "";
+  background-color: var(--purple);
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  height: 100%;
+  top: 7px;
+  left: 7px;
+  transition: 0.2s;
+}
+
+.button-52:hover:after {
+  top: 0px;
+  left: 0px;
+}
+
+@media (min-width: 768px) {
+  .button-52 {
+    padding: 13px 50px 13px;
+  }
+}
+
+/* signup page */
+.food-img-container{
+    width: 100vw;
+    height: 600px;
+    background-image: url("./images/food-home-black.jpeg");
+    background-repeat:no-repeat;
+    background-size: cover;
+    padding: 200px 0 0 7%;
+}
+
+.signup-content {
+    width: 70%;
+    color: var(--white);
+}
+@media (max-width: 575px) {
+    .description-container {
+        width: 100%;
+    }
+}
+
+.description {
+    font-size: 50px;
+    margin-bottom: 40px;
+}
+@media (max-width: 575px) {
+    .description {
+        font-size: 25px;
+    }
+}
