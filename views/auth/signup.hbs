@@ -1,87 +1,21 @@
-<h1 class="text-primary">Sign up to XXXXX</h1>
-
-<form action="/signup" method="POST">
-    <div class="account">
-        <div>
-            <label for="email" class="form-label">Email:</label>
-            <input value="{{user.email}}" type="email" class="form-control {{#if errors.email}}is-invalid{{/if}}" id="email" name="email" aria-describedby="emailHelp" required>>
-            <div id="emailHelp" class="form-text">You can not use the same email for multiple accounts</div>
-            <div class="invalid-feedback">
-                {{errors.email}}
-            </div>
-        </div>
-
-        <div>
-            <label for="username" class="form-label">username:</label>
-            <input value="{{user.username}}" type="username" class="form-control {{#if errors.username}}is-invalid{{/if}}" id="username" name="username" aria-describedby="usernameHelp" required>>
-            <div id="usernameHelp" class="form-text">This username already exists, please choose another one</div>
-            <div class="invalid-feedback">
-                {{errors.username}}
-            </div>
-        </div>
-
-        <div>
-            <label for="password" class="form-label">password</label>
-            <input value="{{user.password}}" type="password" class="form-control {{#if errors.password}}is-invalid{{/if}}" id="password" name="password" aria-describedby="passwordHelp" required>>
-            <div class="invalid-feedback">
-                {{errors.password}}
-            </div>
-        </div>
+<div class="food-img-container">
+        <div class="signup-content">
+        <h1>Sign up to Açaí</h1>
+        <form action="/login" method="POST">
+            <label for="email" class="form-label">Email address</label>
+            <input value="{{user.email}}" type="email" class="form-control {{#if errorMessage}}is-invalid{{/if}}" id="email" name="email" aria-describedby="emailHelp" required>
+                <div class="invalid-feedback">
+                {{errorMessage}}
+                </div>
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        <button class="button-52" type="submit">Submit</button>
+        <a href="/login/google" class="register-btn-container">
+          <i class="fa fa-google"></i>
+          Register with Google
+        </a>
+      <a href=“/”>Already have an account? <strong>Login here!</strong></a>
+        
+        </form>
     </div>
-
-    <div class="details">
-        <div>
-            {{!-- FAZER COMO OPCAO "FEMALE "MALE" --}}
-            <label for="gender">Gender:</label>
-            <input value="{{user.gender}}" type="gender" class="form-control" id="gender" name="gender">
-        </div>
-
-        <div>
-            {{!-- OBRIGATORIAMENTE EM KG --}}
-            <label for="weight">Weight:</label>
-            <input value="{{user.weight}}" type="weight" class="form-control" id="weight" name="weight">
-        </div>
-
-        <div>
-            {{!-- OBRIGATORIAMENTE EM CM --}}
-            <label for="height">Height:</label>
-            <input value="{{user.height}}" type="height" class="form-control" id="height" name="height">
-        </div>
-
-        <div>
-            <label for="bday">Date of Birth:</label>
-            <input value="{{user.bday}}" type="date" class="form-control" id="bday" name="bday">
-        </div>
-
-        <div>
-            <label for="activity">Activity Level*:</label>
-            <select name="activity" id="activity-select">
-                <option value="sedentary">Sedentary</option>
-                <option value="low-active">Low active</option>
-                <option value="active">Active</option>
-                <option value="very-active">Very active</option>
-            </select>
-        </div>
-    </div>
-
-    <div class="goals">
-        <div>
-            <label for="activity">Diet Goal:</label>
-            <select name="activity" id="activity-select">
-                <option value="sedentary">Gradual loss</option>
-                <option value="low-active">Moderate loss</option>
-                <option value="active">Gradual gain</option>
-                <option value="very-active">Moderante gain</option>
-            </select>
-        </div>
-
-         <div>
-            {{!-- OBRIGATORIAMENTE EM KG --}}
-            <label for="goalWeight">Goal Weight:</label>
-            <input value="{{user}}" type="text" class="form-control" id="goal-weight" name="goal-weight">
-        </div>
-    </div>
-
-    <button type="submit">Next</button>
-
-</form>
+</div>

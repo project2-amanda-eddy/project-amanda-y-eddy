@@ -2,7 +2,7 @@
     --transparentBlack: #000000c4;
     --black: black;
     --white: white;
-    --purple: #c5cc88;
+    --purple: #75628f;
 }
 
 body, html {
@@ -167,11 +167,12 @@ body, html {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  color: white;
 }
 
 .button-52:after {
   content: "";
-  background-color: #ffe54c;
+  background-color: var(--purple);
   width: 100%;
   z-index: -1;
   position: absolute;
@@ -190,4 +191,34 @@ body, html {
   .button-52 {
     padding: 13px 50px 13px;
   }
+}
+
+/* signup page */
+.food-img-container{
+    width: 100vw;
+    height: 600px;
+    background-image: url("./images/food-home-black.jpeg");
+    background-repeat:no-repeat;
+    background-size: cover;
+    padding: 200px 0 0 7%;
+}
+
+.signup-content {
+    width: 70%;
+    color: var(--white);
+}
+@media (max-width: 575px) {
+    .description-container {
+        width: 100%;
+    }
+}
+
+.description {
+    font-size: 50px;
+    margin-bottom: 40px;
+}
+@media (max-width: 575px) {
+    .description {
+        font-size: 25px;
+    }
 }
