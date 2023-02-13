@@ -21,6 +21,11 @@ const userSchema = new mongoose.Schema(
     googleID: {
       type: String,
     },
+    hasProfileFilled: {
+      type: Boolean,
+      default: false,
+      required: true
+    }
 },
 {
     timestamps: true,

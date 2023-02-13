@@ -1,1 +1,39 @@
-<h1>HOLA</h1>
+<div class="profile-container">
+    <form action="/profile" method="POST">     
+        <div class="form-profile-container">
+            <label for="gender">Gender:</label>
+            <select name="gender" id="gender-select">
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+            </select>
+            {{!-- OBRIGATORIAMENTE EM KG --}}
+            <label for="weight">Weight:</label>
+            <input value="{{profile.weight}}" type="number" class="form-control" id="weight" name="weight">
+            {{!-- OBRIGATORIAMENTE EM CM --}}
+            <label for="height">Height:</label>
+            <input value="{{profile.height}}" type="number" class="form-control" id="height" name="height">
+
+            <label for="age">Age:</label>
+            <input value="{{profile.age}}" type="number" class="form-control" id="age" name="age">
+
+            <label for="activity">Activity Level*:</label>
+            <select name="activity" id="activity-select">
+                <option value="sedentary">Sedentary</option>
+                <option value="low-active">Low active</option>
+                <option value="active">Active</option>
+                <option value="very-active">Very active</option>
+            </select>
+
+            <label for="dietGoal">Diet Goal:</label>
+            <select name="dietGoal" id="diet-goal-select">
+                <option value="gain">Gain</option>
+                <option value="loss">Loss</option>
+
+            </select>
+            {{!-- OBRIGATORIAMENTE EM KG --}}
+            <label for="weightGoal">Goal Weight:</label>
+            <input value="{{profile.weightGoal}}" type="number" class="form-control" id="weight-goal" name="weightGoal">
+    </div>
+    <button type="submit">Save</button>
+    </form>
+</div>

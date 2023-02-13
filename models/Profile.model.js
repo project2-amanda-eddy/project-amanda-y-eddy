@@ -19,9 +19,9 @@ const profileSchema = new mongoose.Schema(
         type: Number,
         required: [true, 'Height is required']
     },
-    bday: {
-        type: Date,
-        required: [true, 'Date of Birth is required']
+    age: {
+        type: Number,
+        required: [true, 'Age is required']
     },
     activity: {
         type: String,
@@ -30,13 +30,19 @@ const profileSchema = new mongoose.Schema(
     },
     dietGoal: {
         type: String,
-        required: [true, 'Diet goal is required']
+        required: [true, 'Diet goal is required'],
+        enum: ["gain", "loss"]
     },
-    goalWeight: {
+    weightGoal: {
         type: Number,
         required: [true, 'Goal Weight is required']
-    
     },
+    IMC: {
+        type: Number,
+    },
+    GEB: {
+        type: Number,
+    }
 },
 {
     timestamps: true,

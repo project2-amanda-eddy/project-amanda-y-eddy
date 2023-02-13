@@ -63,7 +63,15 @@ const doLoginWithStrategy = (req, res, next, strategy = 'local-auth') => {
           if (loginError) {
             next(loginError)
           } else {
-            res.redirect('/profile');
+            User.findById(user.id)
+            .then((user) => {
+              if(user.hasProfileFilled) {
+                res.redirect('/dashboard');
+              } else {
+                res.redirect('/profile');
+              }
+            })
+            .catch(err => next(err))
           }
         })
       }
