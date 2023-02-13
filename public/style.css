@@ -1,3 +1,30 @@
 body {
     margin: 0;
 }
+
+.sidebar-container {
+  margin: 0;
+  padding: 0;
+  width: 25%;
+  background-color: #191414;
+  position: fixed;
+  height: 100%;
+  
+}
+
+.button-sidebar {
+padding-top: 500px;
+}
+
+.button-sidebar a {
+    display: block;
+    color: rgb(230, 218, 218);
+    padding: 16px;
+    text-decoration: none;
+
+}
+
+.button-sidebar ul li {
+    list-style: none;
+
+}
