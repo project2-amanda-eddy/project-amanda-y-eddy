@@ -9,7 +9,7 @@ const GOOGLE_SCOPES = [
 const passport = require('passport');
 
 /* Main route */
-router.get('/', (req, res, next) => res.render('home'))
+router.get('/', authMiddleware.isNotAuthenticated, (req, res, next) => res.render('home'))
 
 /* AUTH */
 router.get('/signup', authMiddleware.isNotAuthenticated, authController.signup);
@@ -32,6 +32,6 @@ router.get(
 
 //User routes
 router.get('/profile', authMiddleware.isAuthenticated, userController.profile);
-
+router.post('/profile', authMiddleware.isAuthenticated, userController.createProfile)
 
 module.exports = router;

@@ -212,3 +212,9 @@ body, html {
     width: 70%;
     color: var(--white);
 }
+
+/* PROFILE PAGE */
+
+.profile-container {
+    padding-top: 100px;
+}
