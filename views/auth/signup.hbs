@@ -1,21 +1,27 @@
 <div class="food-img-container">
         <div class="signup-content">
         <h1>Sign up to Açaí</h1>
-        <form action="/login" method="POST">
+        <form action="/signup" method="POST">
             <label for="email" class="form-label">Email address</label>
-            <input value="{{user.email}}" type="email" class="form-control {{#if errorMessage}}is-invalid{{/if}}" id="email" name="email" aria-describedby="emailHelp" required>
+            <input value="{{user.email}}" type="email" class="form-control {{#if errors.email}}is-invalid{{/if}}" id="email" name="email" aria-describedby="emailHelp" required>
+            {{#if errors.email}}
                 <div class="invalid-feedback">
-                {{errorMessage}}
+                    {{errors.email}}
                 </div>
+            {{/if}}
             <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" name="password" required>
+            <input type="password" class="form-control {{#if errors.password}}is-invalid{{/if}}" id="password" name="password" required>
+            {{#if errors.password}}
+                <div class="invalid-feedback">
+                    {{errors.password}}
+                </div>
+            {{/if}}
         <button class="button-52" type="submit">Submit</button>
-        <a href="/login/google" class="register-btn-container">
+        <a href="/login/google" class="button-google">
           <i class="fa fa-google"></i>
           Register with Google
         </a>
         <a href="/login">Already have an account? <strong>Login here!</strong></a>
-        
         </form>
     </div>
 </div>

@@ -1,16 +1,18 @@
-<div class="food-img"></div>
-
-<form action="/login" method="POST">
-  <div class="mb-3">
-    <label for="email" class="form-label">Email address</label>
-    <input value="{{user.email}}" type="email" class="form-control {{#if errorMessage}}is-invalid{{/if}}" id="email" name="email" aria-describedby="emailHelp" required>
-    <div class="invalid-feedback">
-      {{errorMessage}}
-    </div>
+<div class="food-img-container">
+  <div class="login-content">
+    <form action="/login" method="POST">
+        <label for="email" class="form-label">Email address</label>
+        <input value="{{email}}" type="email" class="form-control {{#if errorMessage}}is-invalid{{/if}}" id="email" name="email" aria-describedby="emailHelp" required>
+          <div class="invalid-feedback">
+            {{errorMessage}}
+          </div>
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+      <button type="submit" class="button-52">Submit</button>
+        <a href="/login/google" class="login-btn-container">
+          <i class="fa fa-google"></i>
+          Login with Google
+        </a>
+    </form>
   </div>
-  <div class="mb-3">
-    <label for="password" class="form-label">Password</label>
-    <input type="password" class="form-control" id="password" name="password" required>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</div>
