@@ -207,18 +207,8 @@ body, html {
     width: 70%;
     color: var(--white);
 }
-@media (max-width: 575px) {
-    .description-container {
-        width: 100%;
-    }
-}
 
-.description {
-    font-size: 50px;
-    margin-bottom: 40px;
-}
-@media (max-width: 575px) {
-    .description {
-        font-size: 25px;
-    }
+.login-content {
+    width: 70%;
+    color: var(--white);
 }
