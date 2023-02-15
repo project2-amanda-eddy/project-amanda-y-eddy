@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const authController = require('../controllers/auth.controller');
 const userController = require('../controllers/user.controller');
+const communityController = require('../controllers/community.controller');
 const authMiddleware = require('../middlewares/auth.middleware');
 const GOOGLE_SCOPES = [
   "https://www.googleapis.com/auth/userinfo.profile",
@@ -33,5 +34,8 @@ router.get(
 //User routes
 router.get('/profile', authMiddleware.isAuthenticated, userController.profile);
 router.post('/profile', authMiddleware.isAuthenticated, userController.createProfile)
+
+router.get('/community', authMiddleware.isAuthenticated, communityController.create);
+router.post('/community', authMiddleware.isAuthenticated, communityController.doCreate);
 
 module.exports = router;

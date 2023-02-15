@@ -196,7 +196,7 @@ body, html {
 /* signup page */
 .food-img-container{
     width: 100vw;
-    height: 600px;
+    height: 100vh;
     background-image: url("./images/food-home-black.jpeg");
     background-repeat:no-repeat;
     background-size: cover;
