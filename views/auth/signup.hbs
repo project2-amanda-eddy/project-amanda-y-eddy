@@ -1,5 +1,5 @@
 <div class="food-img-container">
-        <div class="signup-content">
+    <div class="signup-content">
         <h1>Sign up to Açaí</h1>
         <form action="/signup" method="POST">
             <label for="email" class="form-label">Email address</label>
@@ -16,12 +16,14 @@
                     {{errors.password}}
                 </div>
             {{/if}}
-        <button class="button-52" type="submit">Submit</button>
-        <a href="/login/google" class="button-google">
-          <i class="fa fa-google"></i>
-          Register with Google
-        </a>
-        <a href="/login">Already have an account? <strong>Login here!</strong></a>
         </form>
+        
+        <button class="button-52" type="submit">Submit</button>
+        <div class="buttons-google">
+            <a href="/login/google" class="button-google">
+            <i class="fa fa-google"></i>
+            Register with Google</a><br>
+            <a href="/login">Already have an account? <strong>Login here!</strong></a>
+        </div>
     </div>
 </div>

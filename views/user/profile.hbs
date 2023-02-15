@@ -1,39 +1,50 @@
 <div class="profile-container">
+    <h1>My Profile</h1>
     <form action="/profile" method="POST">     
-        <div class="form-profile-container">
+
+        <div class="form-profile-user">
+            <h4>My Account</h4>
+            <label for="username">Username:</label>
+            <input value="{{user.username}}" type="text" class="form-control" id="username" name="username">
+            <label for="email">Email:</label>
+            <input value="{{user.email}}" type="text" class="form-control" id="email" name="email">
+            <label for="password">Password:</label>
+            <input value="{{user.password}}" type="password" class="form-control" id="password" name="password">
+        </div>
+
+        <div class="form-profile-details">
+            <h4>My Details</h4>
             <label for="gender">Gender:</label>
             <select name="gender" id="gender-select">
                 <option value="female">Female</option>
                 <option value="male">Male</option>
             </select>
-            {{!-- OBRIGATORIAMENTE EM KG --}}
             <label for="weight">Weight:</label>
-            <input value="{{profile.weight}}" type="number" class="form-control" id="weight" name="weight">
-            {{!-- OBRIGATORIAMENTE EM CM --}}
+            <input placeholder="Weight in kg" value="{{profile.weight}}" type="number" class="form-control" id="weight" name="weight">
             <label for="height">Height:</label>
-            <input value="{{profile.height}}" type="number" class="form-control" id="height" name="height">
-
+            <input placeholder="Height in cm" value="{{profile.height}}" type="number" class="form-control" id="height" name="height">
             <label for="age">Age:</label>
             <input value="{{profile.age}}" type="number" class="form-control" id="age" name="age">
-
             <label for="activity">Activity Level*:</label>
             <select name="activity" id="activity-select">
                 <option value="sedentary">Sedentary</option>
                 <option value="low-active">Low active</option>
                 <option value="active">Active</option>
-                <option value="very-active">Very active</option>
             </select>
+        </div>
 
+        <div class="form-profile-diet-goal">
+            <h4>My Goals</h4>
             <label for="dietGoal">Diet Goal:</label>
             <select name="dietGoal" id="diet-goal-select">
+                <option value="moderate-loss">Moderate Loss</option>
+                <option value="fast-loss">Fast Loss</option>
                 <option value="gain">Gain</option>
-                <option value="loss">Loss</option>
-
             </select>
-            {{!-- OBRIGATORIAMENTE EM KG --}}
-            <label for="weightGoal">Goal Weight:</label>
+            <label for="weightGoal">Weight Goal:</label>
             <input value="{{profile.weightGoal}}" type="number" class="form-control" id="weight-goal" name="weightGoal">
-    </div>
-    <button type="submit">Save</button>
+        </div>
+
+    <button type="submit" class="button-52">Save</button>
     </form>
 </div>

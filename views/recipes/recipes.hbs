@@ -1,0 +1,31 @@
+<div class="recipes-container">
+    <h1>Recipes</h1>
+    <div>
+        <h4>If you want to see more especific recipes, choose from a category below:</h4>
+        <ul>
+            <li>
+                <a href="/recipes/vegetarian">Vegetarian</a>
+            </li>
+            <li>
+                <a href="/recipes/ketogenic">Ketogenic</a>
+            </li>
+            <li>
+                <a href="/recipes/vegan">Vegan</a>
+            </li>
+            <li>
+                <a href="/recipes/paleo">Paleo</a>
+            </li>
+            <li>
+                <a href="/recipes/gluten-free">Gluten Free</a>
+            </li>
+        </ul>
+    </div>
+    <div>
+        {{#each recipes as |recipe|}}
+            <div>
+                <h5>{{recipe.title}}</h5>
+                <img src={{recipe.image}} alt={{recipe.title}} width="200px">
+            </div>
+        {{/each}}
+    </div>
+</div>

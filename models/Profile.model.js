@@ -26,12 +26,12 @@ const profileSchema = new mongoose.Schema(
     activity: {
         type: String,
         required: [true, 'Activity level is required'],
-        enum: ["sedentary", "low-active", "active", "very-active"]
+        enum: ["sedentary", "low-active", "active"]
     },
     dietGoal: {
         type: String,
         required: [true, 'Diet goal is required'],
-        enum: ["gain", "loss"]
+        enum: ["moderate-loss", "fast-loss", "gain"]
     },
     weightGoal: {
         type: Number,
@@ -42,6 +42,15 @@ const profileSchema = new mongoose.Schema(
     },
     GEB: {
         type: Number,
+    },
+    GET: {
+        type: Number,
+    }, 
+    timeToLose: {
+        type:Number,
+    }, 
+    timeToGain: {
+        type:Number, 
     }
 },
 {

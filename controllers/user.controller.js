@@ -16,12 +16,34 @@ module.exports.createProfile = (req, res, next) => {
     const infoToSave = req.body;
 
     infoToSave.user = id;
-    infoToSave.IMC = infoToSave.weight / (infoToSave.height ^ 2);
+    infoToSave.IMC = infoToSave.weight / (infoToSave.height * infoToSave.height) * 10000;
 
     if(infoToSave.gender === 'female') {
         infoToSave.GEB = (10 * infoToSave.weight) + (6.25 * infoToSave.height) - (5 * infoToSave.age) - 161;
+        if (infoToSave.activity === 'sedentary') {
+            infoToSave.GET = (infoToSave.GEB * 1.2); 
+        } else if (infoToSave.activity === 'low-active') {
+            infoToSave.GET = (infoToSave.GEB * 1.56);
+        } else {
+            infoToSave.GET = (infoToSave.GEB * 1.64);
+        }
     } else {
         infoToSave.GEB = (10 * infoToSave.weight) + (6.25 * infoToSave.height) - (5 * infoToSave.age) + 5;
+        if (infoToSave.activity === 'sedentary') {
+            infoToSave.GET = (infoToSave.GEB * 1.2); 
+        } else if (infoToSave.activity === 'low-active') {
+            infoToSave.GET = (infoToSave.GEB * 1.55);
+        } else {
+            infoToSave.GET = (infoToSave.GEB * 1.78);
+        }
+    }
+
+    if(infoToSave.dietGoal === 'moderate-loss') {
+        infoToSave.timeToLose = (infoToSave.weight - infoToSave.weightGoal) * 30 / 2;
+    } else if (infoToSave.dietGoal === 'fast-loss') {
+         infoToSave.timeToLose = (infoToSave.weight - infoToSave.weightGoal) * 30 / 4;
+    } else {
+         infoToSave.timeToLose = (infoToSave.weight - infoToSave.weightGoal) * 30 / 4;
     }
 
    Profile.findOne({ user: id })
@@ -46,3 +68,15 @@ module.exports.createProfile = (req, res, next) => {
    })
    .catch(err => next(err))
 };
+
+//analytics
+module.exports.showAnalytics = (req, res, next) => {
+    const userId = req.user.id;
+    
+    Profile.findOne({ user: userId })
+    .then((profile) => {
+        res.render('user/analytics', { profile })
+    })
+    .catch(err => next(err))
+}
+

@@ -1,0 +1,8 @@
+<div>
+    <h1>{{ingredient.name}}</h1>
+    <ul>
+        {{#each ingredient.nutrition.nutrients as |nutrient|}}
+            <li>{{nutrient.name}} : {{nutrient.amount}}{{nutrient.unit}}</li>
+        {{/each}}
+    </ul>
+</div>

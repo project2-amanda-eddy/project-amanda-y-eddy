@@ -1,0 +1,50 @@
+<div class="ingredients-container">
+    <h1>Ingredients</h1>
+    <h5>Choose ....</h5>
+    <form>
+        <input type="text" id="search-ingredient" name="ingredient" placeholder="Ex: orange">
+    </form>
+    <div id="show-ingredients-results">
+
+    </div>
+</div>
+
+<script>
+    const buttonSearch = document.getElementById('search-ingredient-button');
+    const input = document.getElementById('search-ingredient');
+    const containerResults = document.getElementById('show-ingredients-results');
+    let results = [];
+
+    let timer;
+    let myInterval;
+
+    input.addEventListener('keyup', (e) => {
+        timer = 0;
+        clearInterval(myInterval)
+        myInterval = setInterval(function() {
+            timer+=1;
+            if(timer === 2) {
+                clearInterval(myInterval)
+                const query = input.value;
+                if(input.value) {
+                    axios.get(`https://api.spoonacular.com/food/ingredients/search?query=${query}&apiKey=36c6ee0f6a784b29a0bee0f32219caab`)
+                    .then(res => {
+                        containerResults.innerHTML = '';
+                        results = res.data.results;
+                        results.forEach(result => {
+                            const divToAdd = document.createElement('div');
+                            divToAdd.classList.add('card-ingredient');
+                            divToAdd.innerHTML = `
+                                <a href="/ingredients/details/${result.id}"
+                                <h5>${result.name}</h5>
+                                </a>
+                            `
+                            containerResults.appendChild(divToAdd);
+                        })
+                    })
+                    .catch(err => console.log('erro'))
+                }
+            }
+        }, 500);
+    })
+</script>

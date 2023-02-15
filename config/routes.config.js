@@ -1,13 +1,18 @@
 const router = require('express').Router();
 const authController = require('../controllers/auth.controller');
 const userController = require('../controllers/user.controller');
+
 const communityController = require('../controllers/community.controller');
+
+const spoonacularController = require('../controllers/spoonacular.controller');
+
 const authMiddleware = require('../middlewares/auth.middleware');
 const GOOGLE_SCOPES = [
   "https://www.googleapis.com/auth/userinfo.profile",
   "https://www.googleapis.com/auth/userinfo.email"
 ];
 const passport = require('passport');
+const User = require('../models/User.model');
 
 /* Main route */
 router.get('/', authMiddleware.isNotAuthenticated, (req, res, next) => res.render('home'))
@@ -33,7 +38,17 @@ router.get(
 
 //User routes
 router.get('/profile', authMiddleware.isAuthenticated, userController.profile);
-router.post('/profile', authMiddleware.isAuthenticated, userController.createProfile)
+router.post('/profile', authMiddleware.isAuthenticated, userController.createProfile);
+router.get('/analytics', authMiddleware.isAuthenticated, userController.showAnalytics);
+
+//Recipes
+router.get('/recipes', authMiddleware.isAuthenticated, spoonacularController.recipes);
+router.get('/recipes/detail/:id', authMiddleware.isAuthenticated, spoonacularController.recipeDetail);
+router.get('/recipes/:diet', authMiddleware.isAuthenticated, spoonacularController.dietRecipes);
+
+//Ingredients
+router.get('/ingredients', authMiddleware.isAuthenticated, spoonacularController.ingredients);
+router.get('/ingredients/details/:id', authMiddleware.isAuthenticated, spoonacularController.ingredientsDetail);
 
 router.get('/community', authMiddleware.isAuthenticated, communityController.create);
 router.post('/community', authMiddleware.isAuthenticated, communityController.doCreate);
