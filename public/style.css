@@ -2,29 +2,29 @@ body {
     margin: 0;
 }
 
+/* sidebar container
 .sidebar-container {
   margin: 0;
   padding: 0;
   width: 25%;
-  background-color: #191414;
+  background-color: black;
   position: fixed;
   height: 100%;
-  
 }
 
-.button-sidebar {
-padding-top: 500px;
+.buttons-sidebar {
+    padding-top: 300px;
+    display: flex;
 }
 
-.button-sidebar a {
-    display: block;
+.buttons-sidebar a {
     color: rgb(230, 218, 218);
-    padding: 16px;
     text-decoration: none;
-
+    padding: 10px;
 }
 
-.button-sidebar ul li {
+
+.buttons-sidebar ul {
     list-style: none;
 
-}
+} */

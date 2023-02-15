@@ -1,0 +1,13 @@
+<div class="diet-recipes-container">
+    {{#if diet}}
+        <h1>{{diet}}</h1>
+    {{/if}}
+    {{#each recipes as |recipe|}}
+        <a href="/recipes/detail/{{recipe.id}}">
+            <div>
+                <h5>{{recipe.title}}</h5>
+                <img src={{recipe.image}} alt={{recipe.title}}>
+            </div>
+        </a>
+    {{/each}}
+</div>
