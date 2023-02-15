@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const communitySchema = new mongoose.Schema(
+const commentSchema = new mongoose.Schema(
   {
     body: {
       type: String,
@@ -21,13 +21,7 @@ const communitySchema = new mongoose.Schema(
   }
 )
 
-communitySchema.virtual('likes', {
-  ref: 'Like',
-  foreignField: 'tweet',
-  localField: '_id',
-  justOne: false
-})
 
-const Community = mongoose.model('Community', communitySchema);
+const Comment = mongoose.model('Community', commentSchema);
 
-module.exports = Community;
+module.exports = Comment;
