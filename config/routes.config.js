@@ -52,6 +52,7 @@ router.get('/ingredients/details/:id', authMiddleware.isAuthenticated, spoonacul
 //community
 router.get('/community', authMiddleware.isAuthenticated, communityController.create);
 router.post('/community', authMiddleware.isAuthenticated, communityController.doCreate);
+router.post('/community/:id/delete', authMiddleware.isAuthenticated, communityController.delete);
 
 //dashboard
 router.get('/dashboard', authMiddleware.isAuthenticated, diaryController.dashboard);

@@ -1,26 +1,34 @@
-const Community = require('../models/Community.model');
+const Comment = require('../models/Community.model');
 const mongoose = require('mongoose');
 
 module.exports.create = (req, res, next) => {
-  res.render('user/community');
+
+  res.render('user/community', { comments: comment});
 }
 
 module.exports.doCreate = (req, res, next) => {
-  const newCommunity = {
+  const newComment = {
     ...req.body,
     user: req.user.id
   }
-  console.log({ newCommunity });
+  console.log({ newComment });
 
-  Community.create(newCommunity)
-    .then(community => {
+  Comment.create(newComment)
+    .then(comment => {
       res.redirect('/community')
     })
     .catch(err => {
       if (mongoose.Error.ValidationError) {
-        res.render('user/community', { community: req.body.body, errors: err.errors })
+        res.render('user/community', { comment: req.body.body, errors: err.errors })
       }
       next(err)
     })
 }
 
+module.exports.delete = (req, res, next) => {
+    Comment.findByIdAndDelete(req.params.id)
+      .then(() => {
+        res.redirect('/community')
+      })
+      .catch(err => next(err))
+  }
