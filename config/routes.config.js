@@ -1,10 +1,9 @@
 const router = require('express').Router();
 const authController = require('../controllers/auth.controller');
 const userController = require('../controllers/user.controller');
-
 const communityController = require('../controllers/community.controller');
-
 const spoonacularController = require('../controllers/spoonacular.controller');
+const diaryController = require('../controllers/diary.controller');
 
 const authMiddleware = require('../middlewares/auth.middleware');
 const GOOGLE_SCOPES = [
@@ -50,7 +49,11 @@ router.get('/recipes/:diet', authMiddleware.isAuthenticated, spoonacularControll
 router.get('/ingredients', authMiddleware.isAuthenticated, spoonacularController.ingredients);
 router.get('/ingredients/details/:id', authMiddleware.isAuthenticated, spoonacularController.ingredientsDetail);
 
+//community
 router.get('/community', authMiddleware.isAuthenticated, communityController.create);
 router.post('/community', authMiddleware.isAuthenticated, communityController.doCreate);
+
+//dashboard
+router.get('/dashboard', authMiddleware.isAuthenticated, diaryController.dashboard);
 
 module.exports = router;
