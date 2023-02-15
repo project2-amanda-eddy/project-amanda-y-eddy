@@ -1,5 +1,6 @@
 const Profile = require('../models/Profile.model');
 const User = require('../models/User.model');
+const Comment = require('../models/Community.model');
 
 module.exports.profile = (req, res, next) => {
     const { id } = req.user;
@@ -80,3 +81,12 @@ module.exports.showAnalytics = (req, res, next) => {
     .catch(err => next(err))
 }
 
+module.exports.comment = (req, res, next) => {
+    Comment.find()
+    .populate('user')
+    .populate('comment')
+    .then(comments => {
+        res.render('user/community', { comments });
+    })
+    .catch(err => next(err))
+}
