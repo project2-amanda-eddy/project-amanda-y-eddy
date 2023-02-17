@@ -2,8 +2,12 @@ const Comment = require('../models/Community.model');
 const mongoose = require('mongoose');
 
 module.exports.create = (req, res, next) => {
-
-  res.render('user/community', { comments: comment});
+    Comment.find()
+        .then(comments => {
+            res.render('user/community', { comments });
+        })
+        .catch(err => next(err))
+ 
 }
 
 module.exports.doCreate = (req, res, next) => {
