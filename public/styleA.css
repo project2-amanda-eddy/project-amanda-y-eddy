@@ -7,11 +7,11 @@
 }
 
 :root {
-    --transparentBlack: #000000c4;
+    --transparentBlack: #000000db;
     --black: black;
     --white: white;
-    --purple: #bda3e7;
-    --dark-purple: #6b5799;
+    --purple: #ad93eb;
+    --dark-purple: #75b6a2;
     --grey: #444343;
 }
 
@@ -346,4 +346,20 @@ body, html {
 
 .profile-container input {
   width:auto;
+}
+
+/*DIARY*/
+.diary-list-ingredient {
+  cursor: pointer;
+  margin: 0;
+  padding: 3px;
+  border: 1px solid black;
+}
+
+.diary-list-ingredient h5{
+  margin: 0;
+}
+
+.diary-list-ingredient:hover {
+  background-color: #ad93eb;
 }

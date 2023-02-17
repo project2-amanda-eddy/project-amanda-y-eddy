@@ -39,6 +39,13 @@ userSchema.virtual('profile', {
   justOne: true
 })
 
+userSchema.virtual('diary', {
+  ref: 'Diary',
+  foreignField: 'user',
+  localField: '_id',
+  justOne: true
+})
+
 userSchema.pre('save', function(next) {
   const rawPassword = this.password;
   if (this.isModified('password')) {

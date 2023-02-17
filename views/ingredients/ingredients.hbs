@@ -1,16 +1,16 @@
 <div class="ingredients-container">
     <h1>Ingredients</h1>
     <h5>Choose one ingredient</h5>
+    
     <form>
         <input type="text" id="search-ingredient" name="ingredient" placeholder="Ex: orange">
     </form>
-    <div id="show-ingredients-results">
 
-    </div>
+    <div id="show-ingredients-results"></div>
+
 </div>
 
 <script>
-    const buttonSearch = document.getElementById('search-ingredient-button');
     const input = document.getElementById('search-ingredient');
     const containerResults = document.getElementById('show-ingredients-results');
     let results = [];

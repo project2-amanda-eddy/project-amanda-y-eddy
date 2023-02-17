@@ -1,41 +1,110 @@
-<div class="dashboard-container">
+<div class="diary-container">
     <h1>Diary Food</h1>
+    <h5>What have You Eaten Today?</h5>
 
-    <div class="diary">
-        <form action="/dashboard" method="POST">
-            <div class="breakfast">
-                <label for="breakfast" class="form-label">Breakfast:</label>
-                <input type="text" id="search-ingredient-diary" name="breakfast">
-                <button type="submit" class="button-52">Add</button>
-            </div>
+    <form>
+        <input type="text" id="diary-search-ingredient" name="ingredient" placeholder="Ex: blablablabla">
+        <input type="number" id="diary-amount" name="amount" placeholder="Ex: 100">
+        <select type="text" id="diary-unit" name="unit">
+            <option value="grams">grams</option>
+            <option value="cup">cup</option>
+        </select>
+        <select type="text" id="diary-meal-time" name="meal-time">
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+            <option value="other">Other</option>
+        </select>
+        <button id="diary-add-ingredient" type="submit"><i class='bx bxs-plus-circle'></i></button>
+    </form>
 
-            <div class="lunch">
-                <label for="lunch" class="form-label">Lunch:</label>
-                <input type="text" id="search-ingredient-diary" name="lunch">
-                <button type="submit" class="button-52">Add</button>
-            </div>
+    <div id="foods-shows-results"></div>
 
-            <div class="dinner">
-                <label for="dinner" class="form-label">Dinner:</label>
-                <input type="text" id="search-ingredient-diary" name="dinner">
-                <button type="submit" class="button-52">Add</button>
-            </div>
+    <div class="diary-content">
+        <div class="breakfast">
+            <h5>Breakfast</h5>
+        </div>
 
-            <div class="other">
-                <label for="other" class="form-label">Other:</label>
-                <input type="text" id="search-ingredient" name="other">
-                <button type="submit" class="button-52">Add</button>
-            </div>
-        </form>
+        <div class="lunch">
+            <h5>Lunch</h5>
+        </div>
 
+        <div class="dinner">
+            <h5>Dinner</h5>
+        </div>
 
-
+        <div class="other">
+            <h5>Other</h5>
+        </div>
     </div>
-
-
-
-
-    <div class="day-summary"></div>
 
 </div>
 
+<script>
+    const inputDiary = document.getElementById('diary-search-ingredient');
+    const foodsResults = document.getElementById('foods-shows-results');
+    let idOfSelectedIngredient;
+
+    let timerDiary;
+    let myIntervalDiary;
+
+    inputDiary.addEventListener('keyup', (e) => {
+        timerDiary = 0;
+        clearInterval(myIntervalDiary)
+        myIntervalDiary = setInterval(function() {
+            timerDiary+=1;
+                if(timerDiary === 1) {
+                    clearInterval(myIntervalDiary)
+                    const query = inputDiary.value;
+                    if(inputDiary.value) {
+                        axios.get(`https://api.spoonacular.com/food/ingredients/search?query=${query}&apiKey=36c6ee0f6a784b29a0bee0f32219caab`)
+                        .then(res => {
+                            foodsResults.innerHTML = '';
+                            let resultsDiary = res.data.results;
+                            resultsDiary.forEach(result => {
+                                const divToAddDiary = document.createElement('div');
+                                divToAddDiary.classList.add('diary-list-ingredient');
+                                divToAddDiary.onclick = () => saveIngredientInfo(result.id, result.name)
+                                divToAddDiary.innerHTML = `<h5>${result.name}</h5>`
+                                foodsResults.appendChild(divToAddDiary);
+                            })
+                        })
+                        .catch(err => console.log(err))
+                    }
+                }
+        }, 500);
+    })
+
+    //When click on the ingredient
+    function saveIngredientInfo(ingredientId, ingredientName) {
+        foodsResults.innerHTML = '';
+        inputDiary.value = ingredientName;
+        idOfSelectedIngredient = ingredientId;
+    }
+
+    //when click add button
+    const diaryAmount = document.getElementById('diary-amount')
+    const diaryMealTime = document.getElementById('diary-meal-time')
+    const diaryUnit = document.getElementById('diary-unit')
+    
+    const buttonAdd = document.getElementById('diary-add-ingredient');
+    buttonAdd.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        let options = {
+            method: 'post',
+            url: '/diary',
+            data: {
+                'idOfIngredient': idOfSelectedIngredient,
+                'diaryAmount': diaryAmount.value, 
+                'diaryMealTime': diaryMealTime.value,
+                'diaryUnit': diaryUnit
+            }
+        };
+
+        axios(options)
+        .then(res => console.log("OKKKKKKKK"))
+        .catch(err => console.log(err))
+
+    })
+</script>

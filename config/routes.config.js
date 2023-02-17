@@ -56,5 +56,6 @@ router.post('/community/:id/delete', authMiddleware.isAuthenticated, communityCo
 
 //dashboard
 router.get('/dashboard', authMiddleware.isAuthenticated, diaryController.dashboard);
+router.post('/diary', authMiddleware.isAuthenticated, diaryController.addIngredient);
 
 module.exports = router;

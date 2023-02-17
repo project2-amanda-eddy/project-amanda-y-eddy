@@ -24,6 +24,8 @@ app.use(express.urlencoded({ extended: false }));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'hbs');
 
+app.use(express.json());
+
 //Configure static files */
 app.use(express.static('public'));
 

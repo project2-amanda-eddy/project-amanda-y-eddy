@@ -8,7 +8,7 @@ module.exports.create = (req, res, next) => {
             res.render('user/community', { comments });
         })
         .catch(err => next(err))
- 
+      } 
 
 module.exports.doCreate = (req, res, next) => {
   const newComment = {
