@@ -2,7 +2,6 @@ const Comment = require('../models/Community.model');
 const mongoose = require('mongoose');
 
 module.exports.create = (req, res, next) => {
-
   res.render('user/community', { comments: comment});
 }
 
