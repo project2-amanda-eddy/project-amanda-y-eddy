@@ -22,13 +22,13 @@ const diarySchema = new mongoose.Schema(
     calories: {
         type: Number
     },
-    percentProtein: {
+    proteins: {
         type: Number
     },
-    percentFat: {
+    fats: {
         type: Number
     },
-    percentCarbs: {
+    carbs: {
         type: Number
     },
     date: {
