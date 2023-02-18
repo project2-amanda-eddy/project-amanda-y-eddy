@@ -70,6 +70,14 @@ module.exports.createProfile = (req, res, next) => {
    .catch(err => next(err))
 };
 
+module.exports.doEdit = (req, res, next) => {
+    console.log(req.file)
+    res.send(req.file.path);
+
+    if (req.file) {
+        User.image = req.file.path
+    }
+}
 //analytics
 module.exports.showAnalytics = (req, res, next) => {
     const userId = req.user.id;
