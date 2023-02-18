@@ -18,6 +18,7 @@ module.exports.addIngredient = (req, res, next) => {
         return Diary.findOne({$and: [{ date: date }, { user: currentUserId }]})
     })
     .then(diaryFound => {
+        console.log(ingredientTotalInfo)
         if(!diaryFound) {
             Diary.create({
                 user: currentUserId,
@@ -25,10 +26,11 @@ module.exports.addIngredient = (req, res, next) => {
                 //lunch
                 //dinner
                 //other
+                //... continua
                 //calories vai ser:  o que vier de caloria no ingredientTotalInfo
-                //proteins
-                //fats
-                //carbs
+                percentProtein: ingredientTotalInfo.nutrition.caloricBreakdown.percentProtein,
+                percentFat: ingredientTotalInfo.nutrition.caloricBreakdown.percentFat,
+                percentCarbs: ingredientTotalInfo.nutrition.caloricBreakdown.percentCarbs,
                 date: date
             })
         }
