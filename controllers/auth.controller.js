@@ -18,9 +18,9 @@ module.exports.doSignup = (req, res, next) => {
             errors
         })
     }
-
     User.findOne({ email: req.body.email })
         .then(user => {
+          
             if(!user) {
                 return User.create(req.body)
                 .then(user => {

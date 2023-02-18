@@ -4,6 +4,7 @@ const userController = require('../controllers/user.controller');
 const communityController = require('../controllers/community.controller');
 const spoonacularController = require('../controllers/spoonacular.controller');
 const diaryController = require('../controllers/diary.controller');
+const fileUploader = require('../config/cloudinary.config');
 
 const authMiddleware = require('../middlewares/auth.middleware');
 const GOOGLE_SCOPES = [
@@ -37,8 +38,9 @@ router.get(
 
 //User routes
 router.get('/profile', authMiddleware.isAuthenticated, userController.profile);
-router.post('/profile', authMiddleware.isAuthenticated, userController.createProfile);
+//router.post('/profile', authMiddleware.isAuthenticated, userController.createProfile);
 router.get('/analytics', authMiddleware.isAuthenticated, userController.showAnalytics);
+router.post('/profile', authMiddleware.isAuthenticated, fileUploader.single('image'), userController.doEdit)
 
 //Recipes
 router.get('/recipes', authMiddleware.isAuthenticated, spoonacularController.recipes);
