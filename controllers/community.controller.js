@@ -4,7 +4,13 @@ const mongoose = require('mongoose');
 module.exports.create = (req, res, next) => {
 
     Comment.find()
+        .populate({
+          path: 'user',
+          populate: 'profile'
+        })
+        .sort({createdAt: 'descending'})
         .then(comments => {
+          console.log(comments)
             res.render('user/community', { comments });
         })
         .catch(err => next(err))

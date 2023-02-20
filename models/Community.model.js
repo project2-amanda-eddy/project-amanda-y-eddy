@@ -15,6 +15,7 @@ const commentSchema = new mongoose.Schema(
     image: {
       type: String,
     },
+    
   },
   {
     timestamps: true,
