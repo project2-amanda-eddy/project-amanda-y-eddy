@@ -15,7 +15,10 @@ const commentSchema = new mongoose.Schema(
     image: {
       type: String,
     },
-    
+    isMine: {
+      type: Boolean,
+      default: false
+    }
   },
   {
     timestamps: true,

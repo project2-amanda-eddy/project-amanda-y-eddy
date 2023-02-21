@@ -38,9 +38,8 @@ router.get(
 
 //User routes
 router.get('/profile', authMiddleware.isAuthenticated, userController.profile);
-//router.post('/profile', authMiddleware.isAuthenticated, userController.createProfile);
+router.post('/profile', authMiddleware.isAuthenticated, userController.createProfile);
 router.get('/analytics', authMiddleware.isAuthenticated, userController.showAnalytics);
-router.post('/profile', authMiddleware.isAuthenticated, userController.doEdit)
 router.post('/profile/image', authMiddleware.isAuthenticated, fileUploader.single('image'), userController.doEditProfilePicture)
 
 //Recipes
@@ -54,8 +53,8 @@ router.get('/ingredients/details/:id', authMiddleware.isAuthenticated, spoonacul
 
 //community
 router.get('/community', authMiddleware.isAuthenticated, communityController.create);
-router.post('/community', authMiddleware.isAuthenticated, communityController.doCreate);
-router.post('/community/:id/delete', authMiddleware.isAuthenticated, communityController.delete);
+router.post('/community', authMiddleware.isAuthenticated, fileUploader.single('image'), communityController.doCreate);
+router.post('/comments/:id/delete', authMiddleware.isAuthenticated, communityController.delete);
 
 //dashboard
 router.get('/dashboard', authMiddleware.isAuthenticated, diaryController.dashboard);

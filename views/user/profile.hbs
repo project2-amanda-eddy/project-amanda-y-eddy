@@ -5,7 +5,8 @@
             <img src="{{currentUser.image}}" width="300" />
             <label for="image-input">Image:</label>
             <input type="file" name="image" id="image-input" class="form-control-file" />
-            <input type="text" name="existingImage" hidden id="" value="{{imageUrl}}"/>
+            <input type="text" name="existingImage" hidden id="hidden-img" value="{{imageUrl}}"/>
+            <input type="text" name="username" placeholder="choose your username" value="{{currentUser.username}}"/>
 
             <button>Submit</button>
         </div>

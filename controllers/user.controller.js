@@ -71,16 +71,12 @@ module.exports.createProfile = (req, res, next) => {
 };
 
 module.exports.doEditProfilePicture = (req, res, next) => {
-    console.log(req.file)
-    User.findByIdAndUpdate(req.user.id, { image: req.file.path })
+
+    User.findByIdAndUpdate(req.user.id, { image: req.file?.path, username: req.body?.username })
         .then(() => res.redirect('/profile'))
         .catch(next)
 }
 
-module.exports.doEdit = (req, res, next) => {
-    console.log(req.file)
-    res.send(req.file.path);
-}
 //analytics
 module.exports.showAnalytics = (req, res, next) => {
     const userId = req.user.id;
