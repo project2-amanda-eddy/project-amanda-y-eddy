@@ -7,6 +7,9 @@ const EMAIL_PATTERN =
 
 const userSchema = new mongoose.Schema(
   {
+    username: {
+      type: String,
+    },
     email: {
         type: String,
         match: [EMAIL_PATTERN, 'Email must have a valid format'],

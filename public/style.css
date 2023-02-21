@@ -99,3 +99,12 @@ body {
 .mar-top {
     margin-top: 15px;
 }
+
+.image-community {
+    width: 80px;
+    height: 80px;
+    border-radius: 50px;
+    background-color: black;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

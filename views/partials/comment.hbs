@@ -1,21 +1,22 @@
 <div class="border border-top-0 border-start-0 border-end-0 py-4">
   <div class="d-flex gap-3">
-    <div class="flex-shrink-0 rounded-circle overflow-hidden d-flex justify-content-center align-items-center" style="width: 60px; height: 60px">
-      <img style="width: fit-content; height:fit-content" src="{{comment.user.image}}" class="rounded-circle" alt="...">
-    </div>
+    <div class="image-community" style="background-image: url({{comment.user.image}})"></div>
     <div>
-      <h4 class="mb-1">{{comment.user.userID}}</h4>
+      <h4 class="mb-1">{{comment.user.username}}</h4>
       <p class="m-0">{{comment.body}}</p>
-    </div>
-  </div>
-  <div class="d-flex align-items-center" style="margin-left: 60px;">
-    {{#isOwner currentUser=currentUser commentOwnerId=comment.user.id}}
+      <img src="{{comment.image}}">
+      
+<div class="d-flex align-items-center" style="margin-left: 60px;">
+    {{#if comment.isMine}}
       <form class="m-0" action="/comments/{{comment.id}}/delete" method="POST">
         <button class="btn text-danger" type="submit">
-          <i class="bi bi-trash3-fill"></i>
+          <i class='bx bxs-trash'></i>
         </button>
       </form>
-    {{/isOwner}}
-  </div>  
+    {{/if}}
+  </div> 
+    </div>
+  </div>
+   
 
 </div>

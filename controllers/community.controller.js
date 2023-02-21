@@ -3,25 +3,35 @@ const mongoose = require('mongoose');
 
 module.exports.create = (req, res, next) => {
 
-    Comment.find()
-        .populate({
-          path: 'user',
-          populate: 'profile'
-        })
-        .sort({createdAt: 'descending'})
-        .then(comments => {
-          console.log(comments)
-            res.render('user/community', { comments });
-        })
-        .catch(err => next(err))
-      } 
+  Comment.find()
+  .populate({
+    path: 'user',
+    populate: 'profile'
+  })
+  .sort({createdAt: 'descending'})
+  .then(comments => {
+    comments.forEach(comment => {
+      if (comment.user.id.valueOf() === req.user.id) {
+        comment.isMine = true
+      }
+    })
+    res.render('user/community', { comments });
+  })
+  .catch(err => next(err))
+} 
 
 module.exports.doCreate = (req, res, next) => {
+
+  console.log(req.file)
+
   const newComment = {
     ...req.body,
     user: req.user.id
   }
-  console.log({ newComment });
+
+  if (req.file) {
+    newComment.image = req.file.path;
+  }
 
   Comment.create(newComment)
     .then(comment => {

@@ -3,12 +3,12 @@
 <div class="col-md-12 bootstrap snippets">
 <div class="panel">
   <div class="panel-body">
-    <form action="/community" method="POST">
+    <form action="/community" method="POST" enctype="multipart/form-data">
     <textarea class="form-control {{#if errors.body}}is-invalid{{/if}}" id="body" rows="3" placeholder="Today I ate so healthy that I want to share it" name="body" required>{{comment}}</textarea>
     <div class="mar-top clearfix">
+      <label for="image">IMAGE:</label>
+      <input type="file" name="image" id="image-input" class="form-control-file" />
       <button class="btn btn-sm btn-primary pull-right" type="submit"><i class="fa fa-pencil fa-fw"></i> Share</button>
-      <a class="btn btn-trans btn-icon fa fa-video-camera add-tooltip" href="#"></a>
-      <a class="btn btn-trans btn-icon fa fa-camera add-tooltip" href="#"></a>
     </div>
     </form>
   </div>
@@ -18,7 +18,7 @@
 
 <div class="d-flex min-vh-100 gap-2">
   <section class="border border-bottom-0 border-top-0 w-100 p-4">
-    <h1 class="text-success">Everybody have something to say: share your thoughts BLA</h1>
+    <h1 class="text-success">Everybody has something to say:</h1>
     {{#each comments as |comment|}}
       {{> comment comment=comment currentUser=../currentUser}}
     {{/each}}
