@@ -1,6 +1,29 @@
 <div class="diary-container">
     <h1>Diary Food</h1>
-    <h5>What have You Eaten Today?</h5>
+    <div class="diary-information">
+        <div>
+            <h3>Total calories:</h3>
+            <h5>{{finalDiary.calories}} kcal</h5>
+        </div>
+        <div>
+            <h3>Total carbohydrates:</h3>
+            <h5>{{finalDiary.carbohydrates}} g</h5>
+        </div>
+        <div>
+            <h3>Total proteins:</h3>
+             <h5>{{finalDiary.proteins}} g</h5>
+        </div>
+        <div>
+            <h3>Total fat:</h3>
+             <h5>{{finalDiary.fats}} g</h5>
+        </div>
+        <div>
+            <h3>Total fibers:</h3>
+             <h5>{{finalDiary.fibers}} g</h5>
+        </div>
+    </div>
+
+    <h5>What Have You Eaten Today?</h5>
 
     <form>
         <input type="text" id="diary-search-ingredient" name="ingredient" placeholder="Ex: blablablabla">
@@ -18,23 +41,63 @@
         <button id="diary-add-ingredient" type="submit"><i class='bx bxs-plus-circle'></i></button>
     </form>
 
+    <div class="error-msg no-show">
+        <h2>Something went wrong, try again.</h2>
+    </div>
+
     <div id="foods-shows-results"></div>
 
     <div class="diary-content">
         <div class="breakfast">
             <h5>Breakfast</h5>
+            <div class="breakfast-container">
+                {{#if finalDiary}}
+                    {{#each finalDiary.breakfast as |option|}}
+                        <div>
+                            {{option.name}}
+                        </div>
+                    {{/each}}
+                {{/if}}
+            </div>
         </div>
 
         <div class="lunch">
             <h5>Lunch</h5>
+            <div class="lunch-container">
+                {{#if finalDiary }}
+                    {{#each finalDiary.lunch as |option|}}
+                        <div>
+                            {{option.name}}
+                        </div>
+                    {{/each}}
+                {{/if}}
+            </div>
         </div>
 
         <div class="dinner">
             <h5>Dinner</h5>
+            <div class="dinner-container">
+                {{#if finalDiary }}
+                    {{#each finalDiary.dinner as |option|}}
+                        <div>
+                            {{option.name}}
+                        </div>
+                    {{/each}}
+                {{/if}}
+            </div>
         </div>
 
         <div class="other">
             <h5>Other</h5>
+            <div class="other-container">
+                {{#if finalDiary }}
+                    {{#each finalDiary.other as |option|}}
+                        <div>
+                            {{option.name}}
+                        </div>
+                    {{/each}}
+                {{/if}}
+            </div>
         </div>
     </div>
 
@@ -83,13 +146,29 @@
     }
 
     //when click add button
-    const diaryAmount = document.getElementById('diary-amount')
-    const diaryMealTime = document.getElementById('diary-meal-time')
-    const diaryUnit = document.getElementById('diary-unit')
+    const diaryAmount = document.getElementById('diary-amount');
+    const diaryMealTime = document.getElementById('diary-meal-time');
+    const diaryUnit = document.getElementById('diary-unit');
     
     const buttonAdd = document.getElementById('diary-add-ingredient');
     buttonAdd.addEventListener('click', (e) => {
         e.preventDefault();
+
+        let divToAppend = document.createElement('div');
+        divToAppend.innerHTML = inputDiary.value;
+
+        console.log(divToAppend)
+        
+        if(diaryMealTime.value === 'breakfast') {
+            document.querySelector('.breakfast-container').appendChild(divToAppend);
+        } else if(diaryMealTime.value === 'lunch') {
+            document.querySelector('.lunch-container').appendChild(divToAppend);
+        } else if(diaryMealTime.value === 'dinner') {
+            document.querySelector('.dinner-container').appendChild(divToAppend);
+        } else if(diaryMealTime.value === 'other') {
+            document.querySelector('.other-container').appendChild(divToAppend);
+        }
+
 
         let options = {
             method: 'post',
@@ -98,13 +177,19 @@
                 'idOfIngredient': idOfSelectedIngredient,
                 'diaryAmount': diaryAmount.value, 
                 'diaryMealTime': diaryMealTime.value,
-                'diaryUnit': diaryUnit
+                'diaryUnit': diaryUnit.value
             }
         };
 
+        
         axios(options)
-        .then(res => console.log("OKKKKKKKK"))
-        .catch(err => console.log(err))
+        .then(res => window.location.reload())
+        .catch(err => {
+            document.getElementsByClassName('error-msg').classList.remove('no-show');
+        })
+
+        inputDiary.value = '';
+        diaryAmount.value = '';
 
     })
 </script>

@@ -314,7 +314,6 @@ body, html {
 .close {
   width: 90px;
 }
-
 .hidden {
   visibility: hidden;
 }
@@ -362,4 +361,16 @@ body, html {
 
 .diary-list-ingredient:hover {
   background-color: #ad93eb;
+}
+
+.error-msg h2 {
+  color: red;
+}
+
+.no-show {
+  display: none;
+}
+
+.diary-information {
+  display: flex;
 }

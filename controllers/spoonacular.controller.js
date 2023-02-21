@@ -50,5 +50,4 @@ module.exports.ingredientsDetail = (req, res, next) => {
         res.render('ingredients/ingredientsDetails', { ingredient })
     })
     .catch(err => next(err))
-
 }
