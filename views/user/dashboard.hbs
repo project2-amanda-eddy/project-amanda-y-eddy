@@ -53,8 +53,8 @@
             <div class="breakfast-container">
                 {{#if finalDiary}}
                     {{#each finalDiary.breakfast as |option|}}
-                        <div>
-                            {{option.name}}
+                        <div id="{{option.name}}-breakfast" class="diary-delete-container"> 
+                            {{option.name}} <i class='bx bxs-trash trash-icon' ></i>
                         </div>
                     {{/each}}
                 {{/if}}
@@ -66,8 +66,8 @@
             <div class="lunch-container">
                 {{#if finalDiary }}
                     {{#each finalDiary.lunch as |option|}}
-                        <div>
-                            {{option.name}}
+                        <div id="{{option.name}}-lunch" class="diary-delete-container"> 
+                            {{option.name}} <i class='bx bxs-trash trash-icon' ></i>
                         </div>
                     {{/each}}
                 {{/if}}
@@ -79,8 +79,8 @@
             <div class="dinner-container">
                 {{#if finalDiary }}
                     {{#each finalDiary.dinner as |option|}}
-                        <div>
-                            {{option.name}}
+                        <div id="{{option.name}}-dinner" class="diary-delete-container"> 
+                            {{option.name}} <i class='bx bxs-trash trash-icon' ></i>
                         </div>
                     {{/each}}
                 {{/if}}
@@ -92,8 +92,8 @@
             <div class="other-container">
                 {{#if finalDiary }}
                     {{#each finalDiary.other as |option|}}
-                        <div>
-                            {{option.name}}
+                        <div id="{{option.name}}-other" class="diary-delete-container"> 
+                            {{option.name}} <i class='bx bxs-trash trash-icon' ></i>
                         </div>
                     {{/each}}
                 {{/if}}
@@ -180,7 +180,6 @@
                 'diaryUnit': diaryUnit.value
             }
         };
-
         
         axios(options)
         .then(res => window.location.reload())
@@ -190,6 +189,19 @@
 
         inputDiary.value = '';
         diaryAmount.value = '';
+    })
 
+    //On click on delete button 
+    let deleteBtns = document.querySelectorAll('.trash-icon');
+
+    deleteBtns.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+            const ingredientName = e.target.parentNode.id;
+            e.target.parentNode.remove()
+
+            axios.put(`/diary/${ingredientName}`)
+            .then((res) => console.log(res))
+            .catch((err) => console.log(err))
+        })
     })
 </script>
