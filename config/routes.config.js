@@ -59,6 +59,7 @@ router.post('/comments/:id/delete', authMiddleware.isAuthenticated, communityCon
 //dashboard
 router.get('/dashboard', authMiddleware.isAuthenticated, diaryController.dashboard);
 router.post('/diary', authMiddleware.isAuthenticated, diaryController.addIngredient);
+router.put('/diary/:name', authMiddleware.isAuthenticated, diaryController.deleteIngredient);
 
 
 module.exports = router;

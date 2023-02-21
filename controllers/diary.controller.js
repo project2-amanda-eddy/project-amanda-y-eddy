@@ -71,3 +71,25 @@ module.exports.addIngredient = (req, res, next) => {
     .catch(err => next(err))
 }
 
+module.exports.deleteIngredient = (req, res, next) => {
+    const currentUserId = req.user.id;
+    const date = new Date().toISOString().split('T')[0];
+    let thisName = req.params.name.split('-')[0];
+    let thisHour = req.params.name.split('-')[1];
+    let diaryToUpdate;
+
+    Diary.findOne(   { $and: [{ date: date }, { user: currentUserId }] })
+    .then(found => {
+        diaryToUpdate = found;
+
+        return Diary.findByIdAndUpdate( diaryToUpdate.id, {
+            breakfast: thisHour === 'breakfast' ? diaryToUpdate.breakfast?.filter(x => x.name !== thisName) : [...diaryToUpdate.breakfast],
+            lunch: thisHour === 'lunch' ? diaryToUpdate.lunch?.filter(x => x.name !== thisName) : [...diaryToUpdate.lunch],
+            dinner: thisHour === 'dinner' ? diaryToUpdate.dinner?.filter(x => x.name !== thisName) : [...diaryToUpdate.dinner],
+            other: thisHour === 'other' ? diaryToUpdate.other?.filter(x => x.name !== thisName) : [...diaryToUpdate.other],
+            //....falta diminuir (atualizar) calorias, fats e etc
+        })
+    })
+    .then((updated) => res.send('foi'))
+    .catch(err => console.log(err))
+}
