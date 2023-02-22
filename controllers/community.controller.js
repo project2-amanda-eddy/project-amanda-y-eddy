@@ -8,6 +8,7 @@ module.exports.create = (req, res, next) => {
     path: 'user',
     populate: 'profile'
   })
+  .populate("likes")
   .sort({createdAt: 'descending'})
   .then(comments => {
     comments.forEach(comment => {

@@ -15,6 +15,7 @@
   <section class="border border-bottom-0 border-top-0 w-100 p-4">
     <h1 class="text-success">Everybody has something to say:</h1>
     {{#each comments as |comment|}}
+  
       {{> comment comment=comment currentUser=../currentUser}}
     {{/each}}
   </section>
