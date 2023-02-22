@@ -14,8 +14,10 @@
         </button>
       </form>
     {{/if}}
+   
      <button class="like-btn btn text-primary" type="button" value="{{comment.id}}">
       <span>{{comment.likes.length}}</span>
+      
       {{#hasLike currentUser=currentUser comment=comment}}
         <i class="bi bi-heart-fill"></i>
       {{else}}
