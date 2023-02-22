@@ -1,31 +1,9 @@
 <div class="diary-container">
-    <h1>Diary Food</h1>
-    <div class="diary-information">
-        <div>
-            <h3>Total calories:</h3>
-            <h5>{{finalDiary.calories}} kcal</h5>
-        </div>
-        <div>
-            <h3>Total carbohydrates:</h3>
-            <h5>{{finalDiary.carbohydrates}} g</h5>
-        </div>
-        <div>
-            <h3>Total proteins:</h3>
-             <h5>{{finalDiary.proteins}} g</h5>
-        </div>
-        <div>
-            <h3>Total fat:</h3>
-             <h5>{{finalDiary.fats}} g</h5>
-        </div>
-        <div>
-            <h3>Total fibers:</h3>
-             <h5>{{finalDiary.fibers}} g</h5>
-        </div>
-    </div>
+    <h1>Food Diary</h1>
 
-    <h5>What Have You Eaten Today?</h5>
 
-    <form>
+    <form class="diary-form">
+        <h5>What Have You Eaten Today?</h5>
         <input type="text" id="diary-search-ingredient" name="ingredient" placeholder="Ex: blablablabla">
         <input type="number" id="diary-amount" name="amount" placeholder="Ex: 100">
         <select type="text" id="diary-unit" name="unit">
@@ -101,6 +79,53 @@
         </div>
     </div>
 
+    <div class="diary-information">
+        <div class="diary-information-sum">
+            <div>
+                <h5>Total calories:</h5>
+                <p>{{finalDiary.calories}} kcal</p>
+            </div>
+            <div>
+                <h5>Total carbohydrates:</h5>
+                <p>{{finalDiary.carbohydrates}} g</p>
+            </div>
+            <div>
+                <h5>Total proteins:</h5>
+                <p>{{finalDiary.proteins}} g</p>
+            </div>
+            <div>
+                <h5>Total fat:</h5>
+                <p>{{finalDiary.fats}} g</p>
+            </div>
+            <div>
+                <h5>Total fibers:</h5>
+                <p>{{finalDiary.fibers}} g</p>
+            </div>
+        </div>
+
+        <div class="diary-information-recommended">
+            <div>
+                <h5>Total calories:</h5>
+                <p>{{profile.GET}}kcal/day</p>
+            </div>
+            <div>
+                <h5>Total carbohydrates:</h5>
+                <p>{{profile.recommendedCarbohydrate}}g/day</p>
+            </div>
+            <div>
+                <h5>Total proteins:</h5>
+                <p>{{profile.recommendedProtein}}g/day</p>
+            </div>
+            <div>
+                <h5>Total fat:</h5>
+                <p>{{profile.recommendedFat}}g/day</p>
+            </div>
+            <div>
+                <h5>Total fibers:</h5>
+                <p>20 a 30g/day</p>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -200,7 +225,7 @@
             e.target.parentNode.remove()
 
             axios.put(`/diary/${ingredientName}`)
-            .then((res) => console.log(res))
+            .then((res) => window.location.reload())
             .catch((err) => console.log(err))
         })
     })
