@@ -48,6 +48,17 @@ module.exports.createProfile = (req, res, next) => {
          infoToSave.timeToLose = (infoToSave.weight - infoToSave.weightGoal) * 30 / 4;
     }
 
+    if(infoToSave.dietGoal === 'moderate-loss' || 'fast-loss') {
+        infoToSave.recommendedCarbohydrate = (infoToSave.GET * 0.3 / 4);
+        infoToSave.recommendedProtein = (infoToSave.GET * 0.4 / 4);
+        infoToSave.recommendedFat = (infoToSave.GET * 0.3 / 4);
+    } else if (infoToSave.dietGoal === 'gain') {
+        infoToSave.recommendedCarbohydrate = (infoToSave.GET * 0.4 / 4);
+        infoToSave.recommendedProtein = (infoToSave.GET * 0.4 / 4);
+        infoToSave.recommendedFat = (infoToSave.GET * 0.2 / 4);
+    }
+
+
    Profile.findOne({ user: id })
    .then((profile) => {
         if(profile) {
@@ -89,6 +100,7 @@ module.exports.showAnalytics = (req, res, next) => {
     .catch(err => next(err))
 }
 
+//coments
 module.exports.comment = (req, res, next) => {
     Comment.find()
     .populate('user')
