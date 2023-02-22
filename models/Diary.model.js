@@ -20,19 +20,24 @@ const diarySchema = new mongoose.Schema(
         type: [],
     },
     calories: {
-        type: Number
+        type: Number,
+        default: 0
     },
     proteins: {
-        type: Number
+        type: Number,
+        default: 0
     },
     fats: {
-        type: Number
+        type: Number,
+        default: 0
     },
     carbohydrates: {
-        type: Number
+        type: Number,
+        default: 0
     },
     fibers: {
-        type: Number
+        type: Number,
+        default: 0
     },
     date: {
         type: String
