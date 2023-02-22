@@ -51,6 +51,15 @@ const profileSchema = new mongoose.Schema(
     }, 
     timeToGain: {
         type:Number, 
+    },
+    recommendedCarbohydrate: {
+        type:Number,
+    },
+    recommendedProtein: {
+        type:Number,
+    },
+    recommendedFat: {
+        type:Number,
     }
 },
 {

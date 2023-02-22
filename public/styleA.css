@@ -314,7 +314,6 @@ body, html {
 .close {
   width: 90px;
 }
-
 .hidden {
   visibility: hidden;
 }
@@ -349,6 +348,58 @@ body, html {
 }
 
 /*DIARY*/
+.diary-container {
+  height: 100vh;
+  margin-top: 5%;
+  margin-left: 5%;
+}
+
+.diary-content {
+  display: flex;
+  justify-content:space-between;
+  padding-top: 30px;
+}
+
+.breakfast {
+  background-color: #444343;
+  color: white;
+  width: 200px;
+  height: 300px;
+  border-radius: 5%;
+}
+
+.lunch {
+  background-color: #444343;
+  color: white;
+  width: 200px;
+  height: 300px;
+  border-radius: 5%;
+}
+
+.dinner {
+  background-color: #444343;
+  color: white;
+  width: 200px;
+  height: 300px;
+  border-radius: 5%;
+}
+
+.other {
+  background-color: #444343;
+  color: white;
+  width: 200px;
+  height: 300px;
+  border-radius: 5%;
+}
+
+
+.diary-information {
+  padding-top: 30px;
+  display: flex;
+  gap:100px;
+}
+
+
 .diary-list-ingredient {
   cursor: pointer;
   margin: 0;
@@ -362,4 +413,16 @@ body, html {
 
 .diary-list-ingredient:hover {
   background-color: #ad93eb;
+}
+
+.error-msg h2 {
+  color: red;
+}
+
+.no-show {
+  display: none;
+}
+
+.diary-information {
+  display: flex;
 }
