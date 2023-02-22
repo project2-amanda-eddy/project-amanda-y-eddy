@@ -25,6 +25,14 @@ const commentSchema = new mongoose.Schema(
   }
 )
 
+commentSchema.virtual('likes', {
+  ref: 'Like',
+  foreignField: 'comment',
+  localField: '_id',
+  justOne: false
+})
+
+
 
 const Comment = mongoose.model('Community', commentSchema);
 

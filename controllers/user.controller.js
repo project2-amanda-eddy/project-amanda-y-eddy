@@ -97,3 +97,29 @@ module.exports.comment = (req, res, next) => {
     })
     .catch(err => next(err))
 }
+
+module.exports.like = (req, res, next) => {
+    const user = req.user.id;
+    const comment = req.params.id;
+  
+    const like = {
+      user,
+      comment
+    };
+
+    Like.findOne({ user, tweet })
+    .then(dbLike => {
+      if (dbLike) {
+        return Like.findByIdAndDelete(dbLike.id)
+          .then((createdLike) => {
+            res.status(204).json({ deleted: true })
+          })
+      } else {
+        return Like.create(like)
+          .then(() => {
+            res.status(201).json({ deleted: false })
+          })
+      }
+    })
+    .catch(err => next(err))
+}

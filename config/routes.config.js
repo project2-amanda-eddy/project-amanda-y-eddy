@@ -55,6 +55,7 @@ router.get('/ingredients/details/:id', authMiddleware.isAuthenticated, spoonacul
 router.get('/community', authMiddleware.isAuthenticated, communityController.create);
 router.post('/community', authMiddleware.isAuthenticated, fileUploader.single('image'), communityController.doCreate);
 router.post('/comments/:id/delete', authMiddleware.isAuthenticated, communityController.delete);
+router.post('/comment/:id/like', authMiddleware.isAuthenticated, userController.like);
 
 //dashboard
 router.get('/dashboard', authMiddleware.isAuthenticated, diaryController.dashboard);
