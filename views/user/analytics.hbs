@@ -1,8 +1,49 @@
-<div>
-    <h1>analytics</h1>
-    <p>IMC: {{profile.IMC}}</p>
-    <p>{{profile.weight}}</p>
-    <p>Diet Goal: {{profile.dietGoal}}</p>
-    <p>Weight Goal: {{profile.weightGoal}}Kg</p>
-    <p>Recommended Kcal: {{profile.GET}}</p>
+<div class="analytics-container">
+    <h1>Analytics</h1>
+    <div class="analytics-information">
+      <div class="details-analytics">
+        <p>IMC: {{profile.IMC}}</p>
+        <p>Weigh:{{profile.weight}} Kg</p>
+      </div>
+
+      <div class="goals-analytics">
+        <h5>Goals</h5>
+        <p>Diet Goal: {{profile.dietGoal}}</p>
+        <p>Weight Goal: {{profile.weightGoal}}Kg</p>
+        <p>Time to lose: {{profile.timeToLose}} days</p>
+      </div>
+
+      <div class="recommended-analytics">
+        <h5>Recommendations</h5>
+        <p>Recommended Kcal: {{profile.GET}} kcal/dia</p>
+        <p>Recommended Carbohydrate: {{profile.recommendedCarbohydrate}} g/dia</p>
+        <p>Recommended Protein: {{profile.recommendedProtein}} g/dia</p>
+        <p>Recommended Fat: {{profile.recommendedFat}} g/dia</p>
+      </div>
+    </div>
+
+  <div id="chart">
+  </div>
+
 </div>
+
+
+<script>
+
+ var options = {
+  chart: {
+    type: 'line'
+  },
+  series: [{
+    name: 'Weight',
+    data: [30,40,35,50,49,60,70,91,125]
+  }],
+  xaxis: {
+    categories: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  }
+}
+
+var chart = new ApexCharts(document.querySelector("#chart"), options);
+
+chart.render();
+</script>

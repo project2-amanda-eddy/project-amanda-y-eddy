@@ -1,7 +1,6 @@
 <div class="diary-container">
     <h1>Food Diary</h1>
 
-
     <form class="diary-form">
         <h5>What Have You Eaten Today?</h5>
         <input type="text" id="diary-search-ingredient" name="ingredient" placeholder="Ex: blablablabla">
@@ -26,9 +25,9 @@
     <div id="foods-shows-results"></div>
 
     <div class="diary-content">
-        <div class="breakfast">
+        <div class="breakfast cards-diary">
             <h5>Breakfast</h5>
-            <div class="breakfast-container">
+            <div class="breakfast-container cards-diary-content">
                 {{#if finalDiary}}
                     {{#each finalDiary.breakfast as |option|}}
                         <div id="{{option.name}}-breakfast" class="diary-delete-container"> 
@@ -39,9 +38,9 @@
             </div>
         </div>
 
-        <div class="lunch">
+        <div class="lunch cards-diary">
             <h5>Lunch</h5>
-            <div class="lunch-container">
+            <div class="lunch-container cards-diary-content">
                 {{#if finalDiary }}
                     {{#each finalDiary.lunch as |option|}}
                         <div id="{{option.name}}-lunch" class="diary-delete-container"> 
@@ -52,9 +51,9 @@
             </div>
         </div>
 
-        <div class="dinner">
+        <div class="dinner cards-diary">
             <h5>Dinner</h5>
-            <div class="dinner-container">
+            <div class="dinner-container cards-diary-content">
                 {{#if finalDiary }}
                     {{#each finalDiary.dinner as |option|}}
                         <div id="{{option.name}}-dinner" class="diary-delete-container"> 
@@ -65,9 +64,9 @@
             </div>
         </div>
 
-        <div class="other">
+        <div class="other cards-diary">
             <h5>Other</h5>
-            <div class="other-container">
+            <div class="other-container cards-diary-content">
                 {{#if finalDiary }}
                     {{#each finalDiary.other as |option|}}
                         <div id="{{option.name}}-other" class="diary-delete-container"> 
@@ -80,50 +79,25 @@
     </div>
 
     <div class="diary-information">
-        <div class="diary-information-sum">
-            <div>
-                <h5>Total calories:</h5>
-                <p>{{finalDiary.calories}} kcal</p>
-            </div>
-            <div>
-                <h5>Total carbohydrates:</h5>
-                <p>{{finalDiary.carbohydrates}} g</p>
-            </div>
-            <div>
-                <h5>Total proteins:</h5>
-                <p>{{finalDiary.proteins}} g</p>
-            </div>
-            <div>
-                <h5>Total fat:</h5>
-                <p>{{finalDiary.fats}} g</p>
-            </div>
-            <div>
-                <h5>Total fibers:</h5>
-                <p>{{finalDiary.fibers}} g</p>
-            </div>
+        <div>
+            <h5>Total calories:</h5>
+            <p>{{finalDiary.calories}} kcal/dia</p>
         </div>
-
-        <div class="diary-information-recommended">
-            <div>
-                <h5>Total calories:</h5>
-                <p>{{profile.GET}}kcal/day</p>
-            </div>
-            <div>
-                <h5>Total carbohydrates:</h5>
-                <p>{{profile.recommendedCarbohydrate}}g/day</p>
-            </div>
-            <div>
-                <h5>Total proteins:</h5>
-                <p>{{profile.recommendedProtein}}g/day</p>
-            </div>
-            <div>
-                <h5>Total fat:</h5>
-                <p>{{profile.recommendedFat}}g/day</p>
-            </div>
-            <div>
-                <h5>Total fibers:</h5>
-                <p>20 a 30g/day</p>
-            </div>
+        <div>
+            <h5>Total carbohydrates:</h5>
+            <p>{{finalDiary.carbohydrates}} g/dia</p>
+        </div>
+        <div>
+            <h5>Total proteins:</h5>
+            <p>{{finalDiary.proteins}} g/dia</p>
+        </div>
+        <div>
+            <h5>Total fat:</h5>
+            <p>{{finalDiary.fats}} g/dia</p>
+        </div>
+        <div>
+            <h5>Total fibers:</h5>
+            <p>{{finalDiary.fibers}} g/dia</p>
         </div>
     </div>
 </div>

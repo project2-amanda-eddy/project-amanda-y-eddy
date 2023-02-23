@@ -1,28 +1,38 @@
 <div class="recipes-container">
     <h1>Recipes</h1>
+    <h4>If you want to see more especific recipes, choose from a category below:</h4>
     <div class="recipes-list">
-        <h4>If you want to see more especific recipes, choose from a category below:</h4>
         <ul>
-            <li>
-                <a href="/recipes/vegetarian">Vegetarian</a>
-            </li>
-            <li>
-                <a href="/recipes/ketogenic">Ketogenic</a>
-            </li>
-            <li>
-                <a href="/recipes/vegan">Vegan</a>
-            </li>
-            <li>
-                <a href="/recipes/paleo">Paleo</a>
-            </li>
-            <li>
-                <a href="/recipes/gluten-free">Gluten Free</a>
-            </li>
+            <div class="recipes-vegetarian links-recipes">
+                <li>
+                    <a href="/recipes/vegetarian">Vegetarian</a>
+                </li>
+            </div>
+            <div class="recipes-ketogenic links-recipes">
+                <li>
+                    <a href="/recipes/ketogenic">Ketogenic</a>
+                </li>
+            </div>
+            <div class="recipes-vegan links-recipes">
+                <li>
+                    <a href="/recipes/vegan">Vegan</a>
+                </li>
+            </div>
+            <div class="recipes-paleo links-recipes">
+                <li>
+                    <a href="/recipes/paleo">Paleo</a>
+                </li>
+            </div>
+            <div class="recipes-gluten-free links-recipes">
+                <li>
+                    <a href="/recipes/gluten-free">Gluten Free</a>
+                </li>
+            </div>
         </ul>
     </div>
-    <div>
+    <div class="recipes-cards">
         {{#each recipes as |recipe|}}
-            <div>
+            <div class="recipes-cards-content">
                 <h5>{{recipe.title}}</h5>
                 <img src={{recipe.image}} alt={{recipe.title}} width="200px">
             </div>
