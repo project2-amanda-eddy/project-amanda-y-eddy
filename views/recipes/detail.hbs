@@ -1,9 +1,13 @@
-<h1>{{recipe.title}}</h1>
-<img src={{recipe.image}} alt={{recipe.title}}>
-{{#each recipe.analyzedInstructions as |instruction|}}
-    {{#each instruction.steps as |step|}}
-        <div>
-            <p>{{step.number}} - {{step.step}}</p>
-        </div>
-    {{/each}}
-{{/each}}
+<div class="recipe-instructions-container">
+    <h1>{{recipe.title}}</h1>
+    <img src={{recipe.image}} alt={{recipe.title}}>
+    <div class="recipes-instructions-content">
+        {{#each recipe.analyzedInstructions as |instruction|}}
+            {{#each instruction.steps as |step|}}
+                <div>
+                    <p>{{step.number}} - {{step.step}}</p>
+                </div>
+            {{/each}}
+        {{/each}}
+    </div>
+</div>

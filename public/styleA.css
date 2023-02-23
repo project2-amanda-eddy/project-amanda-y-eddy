@@ -7,11 +7,11 @@
 }
 
 :root {
-    --transparentBlack: #000000db;
+    --transparentBlack: #000000d0;
     --black: black;
     --white: white;
-    --purple: #ad93eb;
-    --dark-purple: #75b6a2;
+    --purple: #8274ac;
+    --dark-purple: #e4cc8b;
     --grey: #444343;
 }
 
@@ -119,7 +119,7 @@ body, html {
   }
 
 .resources-container {
-    background-image: url("./images/paper-bg.jpg");
+    background-image: url("./images/Paper-Texture.jpg");
     background-repeat:no-repeat;
     background-size: cover;
     width: 100vw;
@@ -159,6 +159,30 @@ body, html {
 
 .resources-container p {
     font-size: 18px;
+}
+
+.opinions-home {
+  background-image: url("./images/food-home-black.jpeg");
+  background-repeat:no-repeat;
+  background-size: cover;
+  width: 100vw;
+  min-height: 350px;
+  padding: 60px 7% 40px 7%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  color: antiquewhite;
+}
+
+.opinions-home-content-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.opinions-home p {
+  font-size: 18px;
 }
 
 /* BUTTON */
@@ -335,9 +359,6 @@ body, html {
   justify-content: space-between;
   padding-left: 5%;
   padding-top: 3%;
-  background-image: url("./images/paper-bg.jpg");
-  background-repeat:no-repeat;
-  background-size: cover;
   color: var(--grey)
 }
 
@@ -365,9 +386,15 @@ body, html {
 
 /*DIARY- DASHBOARD*/
 .diary-container {
-  height: 100vh;
-  margin-top: 3%;
-  margin-left: 3%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 3%;
+  background-color: rgb(187, 180, 212);
+  color: var(--grey)
 }
 
 .diary-content {
@@ -377,7 +404,7 @@ body, html {
 }
 
 .cards-diary {
-  background-color: #444343;
+  background-color: var(--transparentBlack);
   color: white;
   width: 200px;
   height: 300px;
@@ -393,10 +420,12 @@ body, html {
 
 
 .diary-list-ingredient {
+  width: 400px;
   cursor: pointer;
   margin: 0;
   padding: 3px;
   border: 1px solid black;
+  background-color: white;
 }
 
 .diary-list-ingredient h5{
@@ -404,7 +433,7 @@ body, html {
 }
 
 .diary-list-ingredient:hover {
-  background-color: #ad93eb;
+  background-color: var(--dark-purple)
 }
 
 .error-msg h2 {
@@ -421,8 +450,70 @@ body, html {
 
 /* analytics-container */
 .analytics-container {
-    height: 100vh;
-    margin-top: 3%;
-    margin-left: 3%;
+  min-height: 100vh;
+  margin-top: 3%;
+  margin-left: 3%;
 }
 
+#chart {
+  width: 500px;
+}
+
+.analytics-information {
+  
+}
+
+/*RECIPES*/
+.recipes-container {
+  min-height: 100vh;
+  min-width: 100vw;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 3%;
+  color: var(--grey);
+}
+
+.recipes-list a {
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight:bold;
+}
+
+.recipes-list{
+  padding-top: 3%;
+}
+
+.links-recipes {
+  list-style: none;
+  width: 150px;
+  height: 40px;
+  background-color: var(--transparentBlack);
+  border-radius: 5px;
+  display: inline-block;
+  text-align: center;
+}
+
+.links-recipes:hover {
+  background-color: var(--purple)
+}
+
+.diet-recipes-container {
+  min-height: 100vh;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 3%;
+  color: var(--grey);
+}
+
+.recipe-instructions-container {
+  min-height: 100vh;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 3%;
+  color: var(--grey);
+}
+
+.recipes-instructions-content {
+  padding-top: 3%;
+}

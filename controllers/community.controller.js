@@ -1,5 +1,6 @@
 const Comment = require('../models/Community.model');
 const mongoose = require('mongoose');
+ 
 
 module.exports.create = (req, res, next) => {
 
@@ -52,3 +53,14 @@ module.exports.delete = (req, res, next) => {
       })
       .catch(err => next(err))
   }
+
+
+  module.exports.comment = (req, res, next) => {
+    Comment.find()
+    .populate('user')
+    .populate('comment')
+    .then(comments => {
+        res.render('user/community', { comments });
+    })
+    .catch(err => next(err))
+}
