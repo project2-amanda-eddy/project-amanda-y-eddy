@@ -1,10 +1,10 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
-} */
+}
 
 :root {
     --transparentBlack: #000000d0;
@@ -13,6 +13,7 @@
     --purple: #8274ac;
     --dark-purple: #e4cc8b;
     --grey: #444343;
+    --background: rgb(187, 180, 212);
 }
 
 body, html {
@@ -264,6 +265,7 @@ body, html {
   gap: 20px;
 }
 
+
 .sidebar-title {
   position: absolute;
   left: 100px;
@@ -336,6 +338,7 @@ body, html {
 .close {
   width: 90px;
 }
+
 .hidden {
   visibility: hidden;
 }
@@ -354,21 +357,21 @@ body, html {
 /*-----------PROFILE PAGE */
 .profile-container {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   padding-left: 5%;
   padding-top: 3%;
-  color: var(--grey)
+  color: var(--grey);
+}
+
+.image-profile {
+  width: 200px;
+  height: 200px;
+  border-radius: 500px;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .profile-container input {
   width:auto;
-}
-
-.image-username-container {
-  display: flex;
-  flex-direction: column;
 }
 
 .form-profile-details {
@@ -384,22 +387,54 @@ body, html {
   margin-bottom: 5%;
 }
 
+
 /*DIARY- DASHBOARD*/
 .diary-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding-left: 5%;
-  padding-right: 5%;
-  padding-top: 3%;
-  background-color: rgb(187, 180, 212);
+  gap: 10px;
+  padding: 3% 5%;
+  background-color: var(--background);
   color: var(--grey)
+}
+
+@media (max-width: 600px) {
+  .diary-container {
+    justify-content: center;
+    padding-top: 15px;
+  }
+}
+
+.diary-inputs-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px
+}
+
+.diary-form input, .diary-form select {
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+}
+
+.bxs-plus-circle:hover {
+  color: white;
+}
+
+#diary-add-ingredient {
+  border: none;
+  background-color: var(--background);
+  font-size: 35px;
+  padding: 0;
+  margin: 0;
 }
 
 .diary-content {
   display: flex;
-  justify-content:space-between;
+  flex-wrap: wrap;
+  gap: 20px;
   padding-top: 30px;
 }
 
@@ -407,17 +442,23 @@ body, html {
   background-color: var(--transparentBlack);
   color: white;
   width: 200px;
-  height: 300px;
+  min-height: 300px;
   border-radius: 5%;
   text-align: center;
+  padding: 30px;
+}
+
+@media (max-width: 600px) {
+  .cards-diary {
+    width: 100%;
+  }
 }
 
 .diary-information {
-  padding-top: 30px;
   display: flex;
-  gap:100px;
-}
-
+  text-align: center;
+  gap: 20px
+} 
 
 .diary-list-ingredient {
   width: 400px;
@@ -426,6 +467,7 @@ body, html {
   padding: 3px;
   border: 1px solid black;
   background-color: white;
+  border-radius: 5px;
 }
 
 .diary-list-ingredient h5{
@@ -444,10 +486,6 @@ body, html {
   display: none;
 }
 
-.diary-information {
-  display: flex;
-}
-
 /* analytics-container */
 .analytics-container {
   min-height: 100vh;
@@ -457,10 +495,6 @@ body, html {
 
 #chart {
   width: 500px;
-}
-
-.analytics-information {
-  
 }
 
 /*RECIPES*/

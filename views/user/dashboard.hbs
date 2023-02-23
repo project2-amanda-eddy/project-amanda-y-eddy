@@ -3,19 +3,21 @@
 
     <form class="diary-form">
         <h5>What Have You Eaten Today?</h5>
-        <input type="text" id="diary-search-ingredient" name="ingredient" placeholder="Ex: blablablabla">
-        <input type="number" id="diary-amount" name="amount" placeholder="Ex: 100">
-        <select type="text" id="diary-unit" name="unit">
-            <option value="grams">grams</option>
-            <option value="cup">cup</option>
-        </select>
-        <select type="text" id="diary-meal-time" name="meal-time">
-            <option value="breakfast">Breakfast</option>
-            <option value="lunch">Lunch</option>
-            <option value="dinner">Dinner</option>
-            <option value="other">Other</option>
-        </select>
-        <button id="diary-add-ingredient" type="submit"><i class='bx bxs-plus-circle'></i></button>
+        <div class="diary-inputs-container">
+            <input type="text" id="diary-search-ingredient" name="ingredient" placeholder="Ex: apple">
+            <input type="number" id="diary-amount" name="amount" placeholder="Ex: 100">
+            <select type="text" id="diary-unit" name="unit">
+                <option value="grams">Grams</option>
+                <option value="cup">Cup</option>
+            </select>
+            <select type="text" id="diary-meal-time" name="meal-time">
+                <option value="breakfast">Breakfast</option>
+                <option value="lunch">Lunch</option>
+                <option value="dinner">Dinner</option>
+                <option value="other">Other</option>
+            </select>
+            <button id="diary-add-ingredient" type="submit"><i class='bx bxs-plus-circle'></i></button>
+        </div>
     </form>
 
     <div class="error-msg no-show">
@@ -27,7 +29,7 @@
     <div class="diary-content">
         <div class="breakfast cards-diary">
             <h5>Breakfast</h5>
-            <div class="breakfast-container cards-diary-content">
+            <div class="breakfast-container ">
                 {{#if finalDiary}}
                     {{#each finalDiary.breakfast as |option|}}
                         <div id="{{option.name}}-breakfast" class="diary-delete-container"> 
@@ -40,7 +42,7 @@
 
         <div class="lunch cards-diary">
             <h5>Lunch</h5>
-            <div class="lunch-container cards-diary-content">
+            <div class="lunch-containert">
                 {{#if finalDiary }}
                     {{#each finalDiary.lunch as |option|}}
                         <div id="{{option.name}}-lunch" class="diary-delete-container"> 
@@ -53,7 +55,7 @@
 
         <div class="dinner cards-diary">
             <h5>Dinner</h5>
-            <div class="dinner-container cards-diary-content">
+            <div class="dinner-container">
                 {{#if finalDiary }}
                     {{#each finalDiary.dinner as |option|}}
                         <div id="{{option.name}}-dinner" class="diary-delete-container"> 
@@ -66,7 +68,7 @@
 
         <div class="other cards-diary">
             <h5>Other</h5>
-            <div class="other-container cards-diary-content">
+            <div class="other-container">
                 {{#if finalDiary }}
                     {{#each finalDiary.other as |option|}}
                         <div id="{{option.name}}-other" class="diary-delete-container"> 
@@ -79,25 +81,25 @@
     </div>
 
     <div class="diary-information">
-        <div>
+        <div class="cards-diary">
             <h5>Total calories:</h5>
             <p>{{finalDiary.calories}} kcal/dia</p>
+            <p>recommended: {{profile.GET}}</p>
         </div>
-        <div>
+        <div class="cards-diary">
             <h5>Total carbohydrates:</h5>
             <p>{{finalDiary.carbohydrates}} g/dia</p>
+            <p>recommended: {{profile.recommendedCarbohydrate}} g/dia</p>
         </div>
-        <div>
+        <div class="cards-diary">
             <h5>Total proteins:</h5>
             <p>{{finalDiary.proteins}} g/dia</p>
+            <p>recommended: {{profile.recommendedProtein}} g/dia</p>
         </div>
-        <div>
+        <div class="cards-diary">
             <h5>Total fat:</h5>
             <p>{{finalDiary.fats}} g/dia</p>
-        </div>
-        <div>
-            <h5>Total fibers:</h5>
-            <p>{{finalDiary.fibers}} g/dia</p>
+            <p>recommended: {{profile.recommendedFat}} g/dia</p>
         </div>
     </div>
 </div>
@@ -119,7 +121,7 @@
                     clearInterval(myIntervalDiary)
                     const query = inputDiary.value;
                     if(inputDiary.value) {
-                        axios.get(`https://api.spoonacular.com/food/ingredients/search?query=${query}&apiKey=36c6ee0f6a784b29a0bee0f32219caab`)
+                        axios.get(`https://api.spoonacular.com/food/ingredients/search?query=${query}&apiKey=fcf1d538179d466baf22e7953d980be8`)
                         .then(res => {
                             foodsResults.innerHTML = '';
                             let resultsDiary = res.data.results;
