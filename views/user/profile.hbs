@@ -2,7 +2,8 @@
     <h1>My Profile</h1>
     <form action="/profile/image" method="post" enctype="multipart/form-data">
         <div class="form-group username-image-container">
-            <img src="{{currentUser.image}}" width="300" />
+            <div class="image-profile" style="background-image: url({{currentUser.image}})"></div>
+            {{!-- <img src="{{currentUser.image}}" width="300" /> --}}
             <label for="image-input">Image:</label>
             <input type="file" name="image" id="image-input" class="form-control-file" />
             <input type="text" name="existingImage" hidden id="hidden-img" value="{{imageUrl}}"/>

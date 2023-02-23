@@ -1,5 +1,7 @@
 const Diary = require('../models/Diary.model');
+const Profile = require('../models/Profile.model')
 const axios = require('axios');
+
 
 //DIARY CONTROLLER
 module.exports.dashboard = (req, res, next) => {
@@ -7,7 +9,13 @@ module.exports.dashboard = (req, res, next) => {
     const date = new Date().toISOString().split('T')[0];
 
     Diary.findOne({$and: [{ date: date }, { user: currentUserId }]})
-    .then(finalDiary => res.render('user/dashboard', { finalDiary }))
+    .then(finalDiary => {
+        Profile.findOne({ user: currentUserId })
+        .then(profile => {
+            res.render('user/dashboard', { finalDiary, profile })
+        })
+        .catch(err => next(err))
+    })
     .catch(err => next(err))
 }
 
