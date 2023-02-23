@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const { Like } = require('./Like.model');
 
 const SALT_ROUNDS = 10;
 const EMAIL_PATTERN =
@@ -36,6 +37,9 @@ const userSchema = new mongoose.Schema(
 },
 {
     timestamps: true,
+    toObject: { 
+      virtuals: true
+    },
 }
 );
 
@@ -58,6 +62,13 @@ userSchema.virtual('community', {
   foreignField: 'user',
   localField: '_id',
   justOne: true
+})
+
+userSchema.virtual('likes', {
+  ref: 'Like',
+  foreignField: 'user',
+  localField: '_id',
+  justOne: false
 })
 
 userSchema.pre('save', function(next) {

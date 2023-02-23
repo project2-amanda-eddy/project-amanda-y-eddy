@@ -1,6 +1,8 @@
 const Profile = require('../models/Profile.model');
 const User = require('../models/User.model');
-// const Comment = require('../models/Community.model');
+const Comment = require('../models/Community.model');
+const Like = require('../models/Like.model');
+
 
 module.exports.profile = (req, res, next) => {
     const { id } = req.user;
@@ -100,12 +102,40 @@ module.exports.showAnalytics = (req, res, next) => {
 }
 
 //coments
-// module.exports.comment = (req, res, next) => {
-//     Comment.find()
-//     .populate('user')
-//     .populate('comment')
-//     .then(comments => {
-//         res.render('user/community', { comments });
-//     })
-//     .catch(err => next(err))
-// }
+module.exports.comment = (req, res, next) => {
+    Comment.find()
+    .populate('user')
+    .populate('comment')
+    .populate('likes')
+    .then(comments => {
+        console.log("holaaaaaa")
+        res.render('user/community', { comments });
+    })
+    .catch(err => next(err))
+}
+
+module.exports.like = (req, res, next) => {
+    const user = req.user.id;
+    const comment = req.params.id;
+  
+    const like = {
+      user,
+      comment
+    };
+
+    Like.findOne({ user, comment })
+    .then(dbLike => {
+      if (dbLike) {
+        return Like.findByIdAndDelete(dbLike.id)
+          .then((createdLike) => {
+            res.status(204).json({ deleted: true })
+          })
+      } else {
+        return Like.create(like)
+          .then(() => {
+            res.status(201).json({ deleted: false })
+          })
+      }
+    })
+    .catch(err => next(err))
+}
