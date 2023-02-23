@@ -161,7 +161,6 @@ body, html {
     font-size: 18px;
 }
 
-
 /* BUTTON */
 .button-52 {
   font-size: 16px;
@@ -224,7 +223,6 @@ body, html {
 
 
 /*-------------SIDEBAR*/
-
 .sidebar-container {
   min-height: 100%;
   position: fixed;
@@ -335,8 +333,8 @@ body, html {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-left: 3%;
-  padding-top: 1%;
+  padding-left: 5%;
+  padding-top: 3%;
   background-image: url("./images/paper-bg.jpg");
   background-repeat:no-repeat;
   background-size: cover;
@@ -347,11 +345,29 @@ body, html {
   width:auto;
 }
 
-/*DIARY*/
+.image-username-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-profile-details {
+  padding-top: 5%;
+}
+
+.form-profile-diet-goal {
+  padding-top: 5%;
+}
+
+.btn-save-profile {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+/*DIARY- DASHBOARD*/
 .diary-container {
   height: 100vh;
-  margin-top: 5%;
-  margin-left: 5%;
+  margin-top: 3%;
+  margin-left: 3%;
 }
 
 .diary-content {
@@ -360,38 +376,14 @@ body, html {
   padding-top: 30px;
 }
 
-.breakfast {
+.cards-diary {
   background-color: #444343;
   color: white;
   width: 200px;
   height: 300px;
   border-radius: 5%;
+  text-align: center;
 }
-
-.lunch {
-  background-color: #444343;
-  color: white;
-  width: 200px;
-  height: 300px;
-  border-radius: 5%;
-}
-
-.dinner {
-  background-color: #444343;
-  color: white;
-  width: 200px;
-  height: 300px;
-  border-radius: 5%;
-}
-
-.other {
-  background-color: #444343;
-  color: white;
-  width: 200px;
-  height: 300px;
-  border-radius: 5%;
-}
-
 
 .diary-information {
   padding-top: 30px;
@@ -426,3 +418,11 @@ body, html {
 .diary-information {
   display: flex;
 }
+
+/* analytics-container */
+.analytics-container {
+    height: 100vh;
+    margin-top: 3%;
+    margin-left: 3%;
+}
+
