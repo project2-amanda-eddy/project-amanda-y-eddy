@@ -3,8 +3,8 @@
     <form action="/community" method="POST" enctype="multipart/form-data">
     <textarea class="form-control {{#if errors.body}}is-invalid{{/if}}" id="body" rows="3" placeholder="Today I ate so healthy that I want to share it" name="body" required>{{comment}}</textarea>
     <div class="mar-top clearfix">
-      <label for="image"><i class="fa-solid fa-camera-retro"></i></i></label>
-      <input type="file" name="image" id="image-input" class="form-control-file" />
+      <label for="image-input"><i class='bx bxs-camera-plus bx-tada bx-md' style='color:#9a33ff'  ></i></label>
+      <input type="file" name="image" id="image-input" class="form-control-file" style="display: none;visibility: none"/>
       <button class="btn btn-sm btn-primary pull-right" type="submit"><i class="fa fa-pencil fa-fw"></i> Share</button>
     </div>
     </form>
