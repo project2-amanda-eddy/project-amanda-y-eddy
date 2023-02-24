@@ -7,6 +7,11 @@ module.exports.recipes = (req, res, next) => {
     axios.get(`${process.env.SPOONACULAR_URL}/recipes/random?number=10&apiKey=${process.env.SPOONACULAR_KEY}`)
     .then((info) => {
         const recipes = info.data.recipes
+        recipes.forEach((recipe, index) => {
+            recipe.index = index;
+            recipe.activeSlide = false;
+        })
+        recipes[0].activeSlide = true;
         res.render('recipes/recipes', { recipes })
     })
     .catch(err => next(err))
@@ -44,7 +49,7 @@ module.exports.ingredients = (req, res, next) => {
 module.exports.ingredientsDetail = (req, res, next) => {
     const id = req.params.id;
 
-    axios.get(`${process.env.SPOONACULAR_URL}/food/ingredients/${id}/information?apiKey=${process.env.SPOONACULAR_KEY}`)
+    axios.get(`${process.env.SPOONACULAR_URL}/food/ingredients/${id}/information?apiKey=${process.env.SPOONACULAR_KEY}&amount=100&unit=grams`)
     .then((infoFood) => {
         const ingredient = infoFood.data
         res.render('ingredients/ingredientsDetails', { ingredient })

@@ -61,6 +61,6 @@ router.post('/comments/:id/like', authMiddleware.isAuthenticated, userController
 router.get('/dashboard', authMiddleware.isAuthenticated, diaryController.dashboard);
 router.post('/diary', authMiddleware.isAuthenticated, diaryController.addIngredient);
 router.put('/diary/:name', authMiddleware.isAuthenticated, diaryController.deleteIngredient);
-
+router.post('/weight', authMiddleware.isAuthenticated, diaryController.createWeight);
 
 module.exports = router;

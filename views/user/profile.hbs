@@ -3,49 +3,53 @@
     <form action="/profile/image" method="post" enctype="multipart/form-data">
         <div class="form-group username-image-container">
             <div class="image-profile" style="background-image: url({{currentUser.image}})"></div>
-            {{!-- <img src="{{currentUser.image}}" width="300" /> --}}
-            <label for="image-input">Image:</label>
-            <input type="file" name="image" id="image-input" class="form-control-file" />
-            <input type="text" name="existingImage" hidden id="hidden-img" value="{{imageUrl}}"/>
-            <input type="text" name="username" placeholder="choose your username" value="{{currentUser.username}}"/>
-            <button class="btn btn-sm btn-dark pull-right" type="submit">Submit</button>
+            <div class="inputs-image-username">
+                <label for="image-input">Image:</label>
+                <input type="file" name="image" id="image-input" class="form-control-file inputs-profile" />
+                <input type="text" name="existingImage" hidden id="hidden-img" value="{{imageUrl}}"/>
+                <label for="usarname">Username:</label>
+                <input type="text" name="username" placeholder="choose your username" value="{{currentUser.username}}" class="inputs-profile"/>
+            </div>
         </div>
+            <button class="btn btn-sm btn-dark pull-right btn-save-image" type="submit">Submit</button>
     </form>
     
-    <form action="/profile" method="POST">     
-        <div class="form-profile-details">
-            <h4>My Details</h4>
-            <label for="gender">Gender:</label>
-            <select name="gender" id="gender-select">
-                <option value="female">Female</option>
-                <option value="male">Male</option>
-            </select>
-            <label for="weight">Weight:</label>
-            <input placeholder="Weight in kg" value="{{profile.weight}}" type="number" class="form-control" id="weight" name="weight">
-            <label for="height">Height:</label>
-            <input placeholder="Height in cm" value="{{profile.height}}" type="number" class="form-control" id="height" name="height">
-            <label for="age">Age:</label>
-            <input value="{{profile.age}}" type="number" class="form-control" id="age" name="age">
-            <label for="activity">Activity Level*:</label>
-            <select name="activity" id="activity-select">
-                <option value="sedentary">Sedentary</option>
-                <option value="low-active">Low active</option>
-                <option value="active">Active</option>
-            </select>
-    </div>
+    <form action="/profile" method="POST"> 
+        <div class="form-profile">
+            <div class="profile-details">
+                <h4>My Details</h4>
+                <label for="gender">Gender:</label>
+                <select name="gender" id="gender-select">
+                    <option value="female">Female</option>
+                    <option value="male">Male</option>
+                </select>
+                <label for="weight">Weight:</label>
+                <input placeholder="Weight in kg" value="{{profile.weight}}" type="number" class="form-control" id="weight" name="weight">
+                <label for="height">Height:</label>
+                <input placeholder="Height in cm" value="{{profile.height}}" type="number" class="form-control" id="height" name="height">
+                <label for="age">Age:</label>
+                <input value="{{profile.age}}" type="number" class="form-control" id="age" name="age">
+                <label for="activity">Activity Level*:</label>
+                <select name="activity" id="activity-select">
+                    <option value="sedentary">Sedentary</option>
+                    <option value="low-active">Low active</option>
+                    <option value="active">Active</option>
+                </select>
+            </div>    
 
-    <div class="form-profile-diet-goal">
-        <h4>My Goals</h4>
-        <label for="dietGoal">Diet Goal:</label>
-        <select name="dietGoal" id="diet-goal-select">
-            <option value="moderate-loss">Moderate Loss</option>
-            <option value="fast-loss">Fast Loss</option>
-            <option value="gain">Gain</option>
-        </select>
-            <label for="weightGoal">Weight Goal:</label>
-            <input value="{{profile.weightGoal}}" type="number" class="form-control" id="weight-goal" name="weightGoal">
-    </div>
+            <div class="profile-diet-goal">
+                <h4>My Goals</h4>
+                <label for="dietGoal">Diet Goal:</label>
+                <select name="dietGoal" id="diet-goal-select">
+                    <option value="moderate-loss">Moderate Loss</option>
+                    <option value="fast-loss">Fast Loss</option>
+                    <option value="gain">Gain</option>
+                </select>
+                    <label for="weightGoal">Weight Goal:</label>
+                    <input value="{{profile.weightGoal}}" type="number" class="form-control" id="weight-goal" name="weightGoal">
+            </div>
 
-    <button type="submit" class="button-52 btn-save-profile">Save</button>
+        </div>
+            <button type="submit" class="button-52 btn-save-profile">Save</button>
     </form>
 </div>
