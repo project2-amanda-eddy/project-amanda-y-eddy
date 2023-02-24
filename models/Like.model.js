@@ -9,7 +9,7 @@ const likeSchema = new mongoose.Schema(
     },
     comment: {
       type: mongoose.Types.ObjectId,
-      ref: 'Comment',
+      ref: 'Community',
       required: [true, 'A like must have a comment']
     }
   },

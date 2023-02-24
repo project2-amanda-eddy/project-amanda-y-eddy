@@ -1,7 +1,7 @@
 const Profile = require('../models/Profile.model');
 const User = require('../models/User.model');
-const Comment = require('../models/Community.model');
 const Like = require('../models/Like.model');
+const Comment = require('../models/Community.model');
 
 
 module.exports.profile = (req, res, next) => {
@@ -99,6 +99,20 @@ module.exports.showAnalytics = (req, res, next) => {
         res.render('user/analytics', { profile })
     })
     .catch(err => next(err))
+}
+
+//favorites
+module.exports.showFavorites = (req, res, next) => {
+    const currentUserId = req.user.id;
+
+   Like.find({ user:currentUserId })
+   .populate('comment')
+   .populate('user')
+   .then(likes => {
+    console.log(likes)
+    res.render('user/favorites', { likes });
+   }) 
+   .catch(err => console.log(err))
 }
 
 //coments
