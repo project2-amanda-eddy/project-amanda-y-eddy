@@ -7,13 +7,15 @@
 }
 
 :root {
-    --transparentBlack: #000000d0;
+    --transparentBlack: #000000b1;
     --black: black;
     --white: white;
-    --purple: #8274ac;
-    --dark-purple: #e4cc8b;
+    --purple: #8367c7;
+    --dark-purple: #5603ad; 
+    --dark-green: #c2f8cb;
+    --light-green: #f0fff1;
     --grey: #444343;
-    --background: rgb(187, 180, 212);
+    --background: #aa9ec6;
 }
 
 body, html {
@@ -360,6 +362,20 @@ body, html {
   padding-left: 5%;
   padding-top: 3%;
   color: var(--grey);
+  background-color: var(--background);
+}
+
+.username-image-container {
+  display: flex;
+  align-items: center;
+  padding-top: 3%;
+}
+
+.inputs-image-username {
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+  margin-left: 10%;
 }
 
 .image-profile {
@@ -374,21 +390,29 @@ body, html {
   width:auto;
 }
 
-.form-profile-details {
-  padding-top: 5%;
+.inputs-profile {
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
 }
 
-.form-profile-diet-goal {
-  padding-top: 5%;
+.btn-save-image {
+  width: 200px;
+  margin-left: 290px;
+}
+
+.form-profile {
+  display: flex;
+  gap: 30px;
+  padding-top: 5%; 
 }
 
 .btn-save-profile {
-  margin-top: 5%;
-  margin-bottom: 5%;
+  margin-top: 3%;
 }
 
 
-/*DIARY- DASHBOARD*/
+/*DIARY-DASHBOARD*/
 .diary-container {
   min-height: 100vh;
   display: flex;
@@ -410,7 +434,8 @@ body, html {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 10px
+  gap: 10px;
+  position: relative;
 }
 
 .diary-form input, .diary-form select {
@@ -420,7 +445,7 @@ body, html {
 }
 
 .bxs-plus-circle:hover {
-  color: white;
+  color: var(--dark-purple);
 }
 
 #diary-add-ingredient {
@@ -454,24 +479,55 @@ body, html {
   }
 }
 
-.diary-information {
+.diary-nutrition-information {
   display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-top: 30px;
+}
+
+.cards-diary-nutrition-info {
+  background-color: var(--dark-purple);
+  color: white;
+  width: 200px;
+  min-height: 200px;
+  border-radius: 5%;
   text-align: center;
-  gap: 20px
-} 
+  padding: 30px;
+}
+
+@media (max-width: 600px) {
+  .cards-diary--nutrition-info {
+    width: 100%;
+  }
+}
+
+/*input search foods*/
+#foods-shows-results {
+  position: absolute;
+  top: 50px;
+  left: 0;
+}
+
+@media (max-width: 600px) {
+  #foods-shows-results {
+    top: 40px;
+  }
+}
 
 .diary-list-ingredient {
-  width: 400px;
   cursor: pointer;
   margin: 0;
-  padding: 3px;
-  border: 1px solid black;
+  padding: 5px 10px;
+  border: 1px solid rgb(230, 229, 229);
   background-color: white;
-  border-radius: 5px;
+  font-size: small;
+  min-width: 205px;
 }
 
 .diary-list-ingredient h5{
   margin: 0;
+  font-size: 14px;
 }
 
 .diary-list-ingredient:hover {
@@ -482,8 +538,18 @@ body, html {
   color: red;
 }
 
+.success {
+  color: rgb(0 139 0);
+  padding: 0 8px;
+  background-color: rgb(210, 255, 210);
+  border: 1px solid rgb(0 139 0);
+  border-radius: 5px;
+  display: block;
+  margin: 5px 0;
+}
+
 .no-show {
-  display: none;
+  display: none !important;
 }
 
 /* analytics-container */
@@ -505,6 +571,11 @@ body, html {
   padding-right: 5%;
   padding-top: 3%;
   color: var(--grey);
+}
+
+.carousel {
+  width:640px;
+  height:360px;
 }
 
 .recipes-list a {

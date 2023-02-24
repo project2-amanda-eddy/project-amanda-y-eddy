@@ -1,5 +1,6 @@
 const Diary = require('../models/Diary.model');
-const Profile = require('../models/Profile.model')
+const Profile = require('../models/Profile.model');
+const Weight = require('../models/Weight.model');
 const axios = require('axios');
 
 
@@ -12,7 +13,11 @@ module.exports.dashboard = (req, res, next) => {
     .then(finalDiary => {
         Profile.findOne({ user: currentUserId })
         .then(profile => {
-            res.render('user/dashboard', { finalDiary, profile })
+            Weight.findOne({ user: currentUserId }).sort({ _id: -1 })
+            .then(weight => {
+                res.render('user/dashboard', { finalDiary, profile, weight })
+            })
+            .catch(err => next(err))
         })
         .catch(err => next(err))
     })
@@ -130,4 +135,34 @@ module.exports.deleteIngredient = (req, res, next) => {
     })
     .then((updated) => res.send('OK'))
     .catch(err => console.log(err))
+}
+
+//WEIGHT CONTROLLER
+module.exports.createWeight = (req, res, next) => {
+    const { weight } = req.body;
+    const date = new Date().toISOString().split('T')[0];
+    const currentUserId = req.user.id;
+    let IMC;
+
+    Profile.findOne({ user: currentUserId })
+    .then(profile => {
+        IMC = weight / (profile.height * profile.height) * 10000;
+        return Weight.findOne({$and: [{ date: date }, { user: currentUserId }]})
+    })
+    .then(weightFound => {
+        if(weightFound) {
+            return Weight.findByIdAndUpdate(weightFound.id, { weight, IMC })
+        } else {
+            return Weight.create({
+                user: currentUserId,
+                date,
+                weight,
+                IMC
+            })
+        }
+    })
+    .then(response => {
+        res.status(201).send('OK')
+    })
+    .catch(err => next(err))
 }

@@ -17,14 +17,13 @@
                 <option value="other">Other</option>
             </select>
             <button id="diary-add-ingredient" type="submit"><i class='bx bxs-plus-circle'></i></button>
+            <div id="foods-shows-results"></div>
         </div>
     </form>
 
     <div class="error-msg no-show">
         <h2>Something went wrong, try again.</h2>
     </div>
-
-    <div id="foods-shows-results"></div>
 
     <div class="diary-content">
         <div class="breakfast cards-diary">
@@ -80,27 +79,37 @@
         </div>
     </div>
 
-    <div class="diary-information">
-        <div class="cards-diary">
+    <div class="diary-nutrition-information">
+        <div class="cards-diary-nutrition-info">
             <h5>Total calories:</h5>
             <p>{{finalDiary.calories}} kcal/dia</p>
             <p>recommended: {{profile.GET}}</p>
         </div>
-        <div class="cards-diary">
+        <div class="cards-diary-nutrition-info">
             <h5>Total carbohydrates:</h5>
             <p>{{finalDiary.carbohydrates}} g/dia</p>
             <p>recommended: {{profile.recommendedCarbohydrate}} g/dia</p>
         </div>
-        <div class="cards-diary">
+        <div class="cards-diary-nutrition-info">
             <h5>Total proteins:</h5>
             <p>{{finalDiary.proteins}} g/dia</p>
             <p>recommended: {{profile.recommendedProtein}} g/dia</p>
         </div>
-        <div class="cards-diary">
+        <div class="cards-diary-nutrition-info">
             <h5>Total fat:</h5>
             <p>{{finalDiary.fats}} g/dia</p>
             <p>recommended: {{profile.recommendedFat}} g/dia</p>
         </div>
+    </div>
+
+    <div class="update-weight-dashboard">
+        <h1>My weight</h1>
+        <form>
+            <label for="currentWeight">Do you want to update your current weight?</label>
+            <input placeholder="Weight in kg" value="{{weight.weight}}" type="number" class="form-control" id="currentWeight" name="currentWeight">
+            <p id="success-weight-msg" class="no-show success">Your weight has been succesfully updated.</p>
+            <button id="weight-submit-btn" type="submit">Save</button>
+        </form>
     </div>
 </div>
 
@@ -134,6 +143,8 @@
                             })
                         })
                         .catch(err => console.log(err))
+                    } else {
+                        foodsResults.innerHTML = '';
                     }
                 }
         }, 500);
@@ -204,5 +215,32 @@
             .then((res) => window.location.reload())
             .catch((err) => console.log(err))
         })
+    })
+
+    //Weight post petition
+    const weightSubmitBtn = document.getElementById('weight-submit-btn');
+    const successMsg = document.getElementById('success-weight-msg');
+    const weightInput = document.getElementById('currentWeight');
+
+    weightSubmitBtn.addEventListener('click', (e) => {
+        e.preventDefault()
+        const weightValue = weightInput.value;
+
+        let options = {
+            method: 'post',
+            url: '/weight',
+            data: {
+                weight: weightValue
+            }
+        };
+
+        axios(options)
+        .then(response => {
+            if (response.status === 201) {
+                successMsg.classList.remove('no-show');
+            }
+        })
+        .catch(err => console.log('error:', err))
+
     })
 </script>
