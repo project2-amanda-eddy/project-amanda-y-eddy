@@ -16,6 +16,7 @@ const User = require('../models/User.model');
 
 /* Main route */
 router.get('/', authMiddleware.isNotAuthenticated, (req, res, next) => res.render('home'))
+router.get('/about', authMiddleware.isNotAuthenticated, (req, res, next) => res.render('about'))
 
 /* AUTH */
 router.get('/signup', authMiddleware.isNotAuthenticated, authController.signup);
@@ -40,8 +41,9 @@ router.get(
 router.get('/profile', authMiddleware.isAuthenticated, userController.profile);
 router.post('/profile', authMiddleware.isAuthenticated, userController.createProfile);
 router.get('/analytics', authMiddleware.isAuthenticated, userController.showAnalytics);
-router.post('/profile/image', authMiddleware.isAuthenticated, fileUploader.single('image'), userController.doEditProfilePicture)
+router.post('/profile/image', authMiddleware.isAuthenticated, fileUploader.single('image'), userController.doEditProfilePicture);
 router.get('/favorites', authMiddleware.isAuthenticated, userController.showFavorites);
+
 
 //Recipes
 router.get('/recipes', authMiddleware.isAuthenticated, spoonacularController.recipes);
