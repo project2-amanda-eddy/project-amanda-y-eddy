@@ -106,9 +106,11 @@
         <h1>My weight</h1>
         <form>
             <label for="currentWeight">Do you want to update your current weight?</label>
-            <input placeholder="Weight in kg" value="{{weight.weight}}" type="number" class="form-control" id="currentWeight" name="currentWeight">
-            <p id="success-weight-msg" class="no-show success">Your weight has been succesfully updated.</p>
-            <button id="weight-submit-btn" type="submit">Save</button>
+            <div class="input-save-update-weight-profile">
+                <input placeholder="Weight in kg" value="{{weight.weight}}" type="number" class="form-control" id="currentWeight" name="currentWeight">
+                <p id="success-weight-msg" class="no-show success">Your weight has been succesfully updated.</p>
+                <button id="weight-submit-btn" type="submit">Save</button>
+            </div>
         </form>
     </div>
 </div>
