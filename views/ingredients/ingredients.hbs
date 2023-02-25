@@ -1,10 +1,16 @@
 <div class="ingredients-container">
     <h1>Ingredients</h1>
-    <h5>Choose one ingredient</h5>
-    
-    <form>
-        <input type="text" id="search-ingredient" name="ingredient" placeholder="Ex: orange">
-    </form>
+    <div class="ingredients-content">
+        <h5>With the Açaí food search you will find the nutritional information of foods, including micronutrients.</h5>
+        <p>Micronutrients, which correspond to vitamins and minerals, are also important in determining which foods are the best sources of energy. Consulting the nutritional table helps you understand which foods offer the best proportion of macro and micronutrients, which is essential for healthy eating and for you to reach your goals.</p>
+    </div>
+
+    <div class="form-search-ingredients">
+        <h5>Choose one ingredient here:</h5>
+        <form>
+            <input type="text" id="search-ingredient" name="ingredient" placeholder="Ex: orange">
+        </form>
+    </div>
 
     <div id="show-ingredients-results"></div>
 
@@ -43,6 +49,8 @@
                         })
                     })
                     .catch(err => console.log('erro'))
+                } else {
+                    containerResults.innerHTML = '';
                 }
             }
         }, 500);
