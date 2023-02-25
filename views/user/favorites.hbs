@@ -1,10 +1,11 @@
-    <div class="favorites-page m-3">
-        <h1 class="text-success" style="margin-left: 24px;">My favorites</h1>
-                    <div class="border border-top-0 border-start-0 border-end-0 py-1" ></div>
+<div class="favorite py-3">    
+    <div class="favorites-page">
+        <h1 class="text" style="margin-left: 24px; color:#c2f8cb">My favorites</h1>
+            <div class="border border-top-0 border-start-0 border-end-0 " style='color:#d4c3dc'></div>
         <div class="favorites-info-container" style="margin-left: 24px;">
         {{#each likes as |like|}}
             <div class="d-flex gap-3 my-4">
-                <div class="image-community" style="background-image: url({{like.user.image}})"></div>
+                <div class="image-community" style="background-image: url({{like.comment.user.image}})"></div>
                 <div>
                     <h4 class="mb-1">{{like.user.username}}</h4>
                     <p class="m-0">{{like.comment.body}} </p>
@@ -13,4 +14,6 @@
             </div>
             <div class="border border-top-0 border-start-0 border-end-0 py-1" ></div>
         {{/each}}
+        </div>
     </div>
+</div>
