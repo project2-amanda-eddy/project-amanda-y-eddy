@@ -127,10 +127,18 @@ module.exports.showFavorites = (req, res, next) => {
     const currentUserId = req.user.id;
 
    Like.find({ user:currentUserId })
+   .sort({createdAt: 'descending'})
    .populate('comment')
-   .populate('user')
+   .populate(
+    {
+      path: "comment", // Donde entra el populate
+      populate: {
+        path: "user", // Porque el like es un post y quiero el creator
+        model: "User", // Y el creator es un modelo de User
+      }
+    }
+  )
    .then(likes => {
-    console.log(likes)
     res.render('user/favorites', { likes });
    }) 
    .catch(err => console.log(err))
