@@ -332,14 +332,17 @@ img {
 .community {
   background-color: #330033;
   color: white;
+  min-height: 100vh;
 }
 
 .favorite {
   background-color: #330033;
   color: white;
+  min-height: 100vh;
 }
 
 .about-us-container {
+  padding-top: 90px;
   background-color: #330033;
   display: flex;
   min-height: 100vh;
@@ -364,7 +367,25 @@ img {
 .about-us-info-center {
   width: 500px;
   background-color: var(--light-purple);
-  padding: 50px;
+  padding: 25px;
   border-radius: 30px;
   min-height: 500px;
+}
+
+.about-me {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.image-icon {
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  width: 35%;
+}
+
+.icon-nav {
+  width: 6%;
 }
