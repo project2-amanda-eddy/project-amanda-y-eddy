@@ -132,7 +132,7 @@
                     clearInterval(myIntervalDiary)
                     const query = inputDiary.value;
                     if(inputDiary.value) {
-                        axios.get(`https://api.spoonacular.com/food/ingredients/search?query=${query}&apiKey=fcf1d538179d466baf22e7953d980be8`)
+                        axios.get(`https://api.spoonacular.com/food/ingredients/search?query=${query}&apiKey=36c6ee0f6a784b29a0bee0f32219caab`)
                         .then(res => {
                             foodsResults.innerHTML = '';
                             let resultsDiary = res.data.results;

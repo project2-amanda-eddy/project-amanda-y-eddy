@@ -1,50 +1,111 @@
 <div class="analytics-container">
     <h1>Analytics</h1>
-    <div class="analytics-information">
+
+    <div class="analytics-top-content">
       <div class="details-analytics">
-        <p>IMC: {{profile.IMC}}</p>
-        <p>Weigh:{{profile.weight}} Kg</p>
+        <div class="image-profile" style="background-image: url({{currentUser.image}})"></div>
+        <p><b>IMC:</b> {{profile.IMC}}</p>
+        <p><b>Weigh:</b> {{profile.weight}} Kg</p>
       </div>
 
-      <div class="goals-analytics">
-        <h5>Goals</h5>
-        <p>Diet Goal: {{profile.dietGoal}}</p>
-        <p>Weight Goal: {{profile.weightGoal}}Kg</p>
-        <p>Time to lose: {{profile.timeToLose}} days</p>
-      </div>
+      <div class="analytics-information">
+        <div class="goals-analytics">
+          <h5><b>Goals</b></h5>
+          <p><b>Diet Goal</b>: {{profile.dietGoal}}</p>
+          <p><b>Weight Goal</b>: {{profile.weightGoal}} Kg</p>
+          <p><b>Time to lose</b>: {{profile.timeToLose}} days</p>
+        </div>
 
-      <div class="recommended-analytics">
-        <h5>Recommendations</h5>
-        <p>Recommended Kcal: {{profile.GET}} kcal/dia</p>
-        <p>Recommended Carbohydrate: {{profile.recommendedCarbohydrate}} g/dia</p>
-        <p>Recommended Protein: {{profile.recommendedProtein}} g/dia</p>
-        <p>Recommended Fat: {{profile.recommendedFat}} g/dia</p>
+        <div class="recommended-analytics">
+          <h5><b>Recommendations</h5></b>
+          <p><b>Recommended Kcal:</b>{{profile.GET}} kcal/dia</p>
+          <p><b>Recommended Carbohydrate:</b> {{profile.recommendedCarbohydrate}} g/dia</p>
+          <p><b>Recommended Protein:</b>{{profile.recommendedProtein}} g/dia</p>
+          <p><b>Recommended Fat:</b>{{profile.recommendedFat}} g/dia</p>
+        </div>
       </div>
     </div>
 
-  <div id="chart">
-  </div>
-
+    <div class="charts-container">
+      <div id="chart1"></div>
+      <div id="chart2"></div>
+    </div>
 </div>
 
-
 <script>
+  let width = window.innerWidth;
 
-  var options = {
-    chart: {
-      type: 'line'
-    },
-    series: [{
-      name: 'Weight',
-      data: [30, 40, 35, 50, 49, 60, 70, 91, 125]
-    }],
-    xaxis: {
-      categories: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    }
-  }
+  window.addEventListener('load', () => {
+    axios.get('/analytics/info')
+    .then(response => {
+      let { diaries, weights, profile } = response.data;
 
-  var chart = new ApexCharts(document.querySelector("#chart"), options);
-  chart.render();
+      let options1 = {
+        chart: {
+          type: 'line'
+        },
+        series: [
+        {
+          name: 'Weight',
+          data: []
+        },
+        {
+          name: 'Weight Goal',
+          data: []
+        }
+        ],
+        xaxis: {
+          categories: []
+        }
+      }
 
+      weights.forEach((weight, index) => {
+        if(index < 7) {
+          options1.series[0].data.push(weight.weight);
+          if(width > 600) {
+            options1.xaxis.categories.push(weight.date);
+          }
+          options1.series[1].data.push(profile.weightGoal);
+        }
+      })
+
+      let chart1 = new ApexCharts(document.querySelector("#chart1"), options1);
+      chart1.render();
+
+      let options2 = {
+        chart: {
+          type: 'line'
+        },
+        series: [
+        {
+          name: 'Calories',
+          data: []
+        },
+        {
+          name: 'Recommended Calories',
+          data: []
+        }
+        ],
+        xaxis: {
+          categories: []
+        }
+      }
+
+      diaries.forEach((diary, index) => {
+        if(index < 7) {
+          options2.series[0].data.push(diary.calories);
+          if(width > 600) {
+            options2.xaxis.categories.push(diary.date);
+          }
+          options2.series[1].data.push(profile.GET);
+        }
+      })
+
+      let chart2 = new ApexCharts(document.querySelector("#chart2"), options2);
+      chart2.render();
+
+    })
+    .catch(err => console.log(err))
+  })
   
 </script>
