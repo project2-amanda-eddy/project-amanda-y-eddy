@@ -1,12 +1,21 @@
 <div class="recipe-instructions-container">
+
     <h1>{{recipe.title}}</h1>
     <img src={{recipe.image}} alt={{recipe.title}}>
+    <div class="recipes-informations">
+        <h4>To serving: {{recipe.servings}} peoples</h4>
+        <p>Health Score: {{recipe.healthScore}}</p>
+    </div>
+
     <div class="recipe-details-ingredients">
+        <h3>Ingredients:</h3>
         {{#each recipe.extendedIngredients as |ingredient|}}
-            <p>{{ingredient.original}}</p>
+            <p>- {{ingredient.original}}</p>
         {{/each}}
     </div>
+
     <div class="recipes-instructions-content">
+        <h3>Preparation:</h3>
         {{#each recipe.analyzedInstructions as |instruction|}}
             {{#each instruction.steps as |step|}}
                 <div>
@@ -15,4 +24,5 @@
             {{/each}}
         {{/each}}
     </div>
+
 </div>

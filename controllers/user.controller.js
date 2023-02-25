@@ -2,6 +2,8 @@ const Profile = require('../models/Profile.model');
 const User = require('../models/User.model');
 const Like = require('../models/Like.model');
 const Comment = require('../models/Community.model');
+const Weight = require('../models/Weight.model');
+const Diary = require('../models/Diary.model');
 
 
 module.exports.profile = (req, res, next) => {
@@ -91,12 +93,31 @@ module.exports.doEditProfilePicture = (req, res, next) => {
 }
 
 //analytics
-module.exports.showAnalytics = (req, res, next) => {
+module.exports.showAnalyticsPage = (req, res, next) => {
     const userId = req.user.id;
     
     Profile.findOne({ user: userId })
     .then((profile) => {
+        profile.IMC = (Math.round(profile.IMC * 100) / 100).toFixed(2);
         res.render('user/analytics', { profile })
+    })
+    .catch(err => next(err))
+}
+
+module.exports.getAnalytics = (req, res, next) => {
+    const userId = req.user.id;
+    
+    Weight.find({ user: userId })
+    .then(weights => {
+        Diary.find({ user: userId })
+        .then(diaries => {
+            Profile.findOne({ user: userId })
+            .then(profile => {
+                res.send({ weights, diaries, profile })
+            })
+            .catch(err => next(err))
+        })
+        .catch(err => next(err))
     })
     .catch(err => next(err))
 }

@@ -1,6 +1,6 @@
 <div class="recipes-container">
     <h1>Recipes</h1>
-    <h4>If you want to see more especific recipes, choose from a category below:</h4>
+    <h6>If you want to see more especific recipes, choose from a category below:</h6>
     <div class="recipes-list">
         <ul>
             <div class="recipes-vegetarian links-recipes">
@@ -31,7 +31,7 @@
         </ul>
     </div>
 
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 100%">
         <ol class="carousel-indicators">
             {{#each recipes as |recipe|}}
                 <li data-target="#carouselExampleIndicators" data-slide-to="{{recipe.index}}" {{#if recipe.activeSlide}}class="active"{{/if}}></li>

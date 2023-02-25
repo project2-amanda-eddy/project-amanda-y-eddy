@@ -40,10 +40,12 @@ router.get(
 //User routes
 router.get('/profile', authMiddleware.isAuthenticated, userController.profile);
 router.post('/profile', authMiddleware.isAuthenticated, userController.createProfile);
-router.get('/analytics', authMiddleware.isAuthenticated, userController.showAnalytics);
 router.post('/profile/image', authMiddleware.isAuthenticated, fileUploader.single('image'), userController.doEditProfilePicture);
 router.get('/favorites', authMiddleware.isAuthenticated, userController.showFavorites);
 
+//Analytics
+router.get('/analytics/info', authMiddleware.isAuthenticated, userController.getAnalytics);
+router.get('/analytics', authMiddleware.isAuthenticated, userController.showAnalyticsPage);
 
 //Recipes
 router.get('/recipes', authMiddleware.isAuthenticated, spoonacularController.recipes);
