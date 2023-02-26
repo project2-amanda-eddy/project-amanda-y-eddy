@@ -417,6 +417,14 @@ body, html {
   padding: 5px;
 }
 
+.input-username {
+  width: 80px;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  padding-left: 10px;
+}
+
 .btn-save-image {
   width: 100px;
   margin-left: 290px;
@@ -532,7 +540,7 @@ body, html {
 
 .cards-diary-nutrition-info {
   background-color: #834f9d;
-  color: #d4c3dc;
+  color: white;
   width: 200px;
   min-height: 200px;
   border-radius: 5%;
@@ -557,13 +565,22 @@ body, html {
 }
 
 .update-weight-dashboard input {
-  width: 80px;
-}
-
-.update-weight-dashboard button {
   width: 100px;
+  height: 50px;
 }
 
+.btn-save-weight {
+  background-color: var(--light-purple);
+  width: 100px;
+  height: 50px;
+  border: none;
+  border-radius: 5px;
+}
+
+.btn-save-weight:hover{
+  background-color: var(--purple);
+  color: white;
+}
 
 /*input search foods*/
 #foods-shows-results {
@@ -704,7 +721,9 @@ body, html {
 .recipes-list ul {
   margin-top: 3%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  padding: 0;
 }
 
 .links-recipes {
@@ -721,6 +740,10 @@ body, html {
   background-color: var(--green)
 }
 
+.previous-next {
+  font-size: 20px;
+}
+
 .diet-recipes-container {
   min-height: 100vh;
   padding: 3% 5%;
@@ -729,14 +752,23 @@ body, html {
 }
 
 .cards-recipes {
-  min-height: 400px;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: 30px;
-  background-color: var(--purple2);
-  width: 300px;
-  border-radius: 10px;
+  gap:30px;
+  text-decoration: none;
+  color: white;
+  margin-top: 3%;
+}
+
+.cards-recipes a {
+    width: 400px;
+    height: 400px;
+    background-color: var(--purple2)
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .cards-recipes a {
