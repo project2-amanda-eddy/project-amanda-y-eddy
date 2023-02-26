@@ -1,8 +1,8 @@
-<div>
-    <h1>{{ingredient.name}}</h1>
-    <h1>{{ingredient.id}}</h1>
+<div class="ingredients-micronutrients">
+    <h1 class="name-ingredient">{{ingredient.name}}</h1>
+    <h6 class="name-ingredient">Values per: {{ingredient.amount}}g</h6>
     <h1>{{ingredient.caloricBreakdown}}</h1>
-    <ul>
+    <ul class="list-micrunutrients">
         {{#each ingredient.nutrition.nutrients as |nutrient|}}
             <li>{{nutrient.name}} : {{nutrient.amount}}{{nutrient.unit}}</li>
         {{/each}}

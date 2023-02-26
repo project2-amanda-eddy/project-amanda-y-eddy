@@ -10,7 +10,8 @@
     --transparentBlack: #000000b1;
     --white: white;
     --purple: #834f9d;
-    --dark-purple: #2a0033;
+    --dark-purple: #231a25;
+    /* --dark-purple: #270030; */
     --light-purple: #d4c3dc;
     --purple2:#c8a4db;
     --green: #7cc17c;
@@ -90,10 +91,6 @@ body, html {
     .description {
         font-size: 25px;
     }
-}
-
-.home-food-img a {
-  width: 200px;
 }
 
 .animation-container {
@@ -190,6 +187,67 @@ body, html {
   font-size: 18px;
 }
 
+/* BUTTONS */
+.signup-btn-home {
+  background-color: var(--dark-purple);
+  color: white;
+  padding: 20px 35px;
+  border-radius: 10px;
+  text-decoration: none;
+  border: none;
+}
+
+.signup-btn-home:hover {
+  background-color: var(--purple);
+  color: white;
+}
+
+.signup-btn-signup {
+  background-color: var(--dark-purple);
+  border-radius: 20px;
+  padding: 15px 20px;
+  border: none;
+  margin-top: 3%;
+  color:white;
+}
+
+.signup-btn-signup:hover{
+  background-color: var(--purple);
+  color: white;
+}
+
+.btn-login {
+  background-color: var(--dark-purple);
+  border-radius: 20px;
+  padding: 15px 20px;
+  border: none;
+  margin-top: 3%;
+  color:white;
+}
+
+.btn-login:hover{
+  background-color: var(--purple);
+  color: white;
+}
+
+
+.buttons-google {
+  display: flex;
+  gap: 20px;
+}
+
+.btn-google {
+  background-color: rgba(0, 0, 0, 0.674);
+  color: white;
+  text-decoration: none;
+  padding: 15px 20px;
+  border-radius: 20px;
+}
+
+.btn-google:hover {
+  background-color: var(--purple);
+  color: white;
+}
 
 /* SIGNUP PAGE */
 .food-img-container{
@@ -705,7 +763,7 @@ body, html {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    padding: 5% 5%;
+    padding: 3% 5%;
     background-color: var(--dark-purple);
     color: white;
 }
@@ -724,7 +782,50 @@ body, html {
   margin: 0;
   padding: 5px 10px;
   border: 1px solid rgb(230, 229, 229);
-  background-color: var(--purple);
+  background-color: var(--light-purple);
   font-size: small;
-  min-width: 205px;
+  min-width: 100px;
+  border-radius: 3px;
+  width: 200px;
+  border-color: white;
+}
+
+.card-ingredient:hover{
+  background-color: var(--green);
+}
+
+.card-ingredient a {
+  text-decoration: none;
+  color: var(--dark-purple);
+}
+
+.ingredients-micronutrients {
+  background-color: var(--dark-purple);
+  color: white;
+  padding: 3% 5%;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.list-micrunutrients {
+  display: flex;
+  flex-wrap: wrap;
+  gap:30px;
+  text-decoration: none;
+  color: white;
+  margin-top: 3%;
+}
+
+.list-micrunutrients li {
+  width: 250px;
+  height: 60px;
+  background-color: var(--purple);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.list-micrunutrients li:hover {
+  background-color: var(--green);
 }
