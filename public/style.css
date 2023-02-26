@@ -389,3 +389,118 @@ img {
 .icon-nav {
   width: 6%;
 }
+
+
+/* Heart animation */
+
+.heart-icon {
+  margin-top: 100px;
+}
+
+.heart {
+  position: inherit;
+  margin-top: 100px;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: pink;
+  height: 50px;
+  width: 50px;
+  transform: rotate(-45deg) ;
+}
+.heart::after {
+  background-color: pink;
+  content: "";
+  border-radius: 50%;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 0px;
+  left: 25px;
+}
+.heart::before {
+  content: "";
+  background-color: pink;
+  border-radius: 50%;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: -25px;
+  left: 0px;
+}
+
+.heart,
+ .heart::after,
+ .heart::before {
+  animation-name: srce;
+  animation-duration: 7s;
+  -webkit-animation-iteration-count: infinite;
+   
+}
+
+@keyframes srce {
+  0% {
+    background-color: pink;
+    
+  }
+  50% {
+    background-color: #DC143C;
+    transform: rotate(45deg);
+  }
+  75% {
+    background-color: red;
+    transform:rotate(-45deg);
+  }
+  100% {
+    background-color: black;
+    
+  }
+  
+}
+
+.favorite-not {
+  padding-top: 100px;
+  position: fixed;
+}
+
+.favorites-page {
+  min-height: 100vh;
+  padding-left: 5%;
+  padding-top: 3%;
+  background-color: var(--dark-purple);
+  color: white;
+  padding-right: 5%;
+}
+
+.about-us-footer {
+  margin-bottom: 40px;
+}
+
+
+/* community */
+.btn-share {
+  width: 100px;
+  background-color: var(--light-purple);
+  height: 33px;
+  border: none;
+  border-radius: 5px;
+}
+
+.btn-share:hover {
+  background-color: var(--purple);
+  color: white;
+}
+
+.community{
+  min-height: 100vh;
+  padding-left: 5%;
+  padding-top: 3%;
+  background-color: var(--dark-purple);
+  padding-right: 5%;
+}
+
+.community-comments {
+  padding-top: 3%;
+}

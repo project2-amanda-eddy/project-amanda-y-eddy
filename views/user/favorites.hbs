@@ -1,19 +1,28 @@
-<div class="favorite py-3">    
-    <div class="favorites-page">
-        <h1 class="text" style="margin-left: 24px; color:#c2f8cb">My favorites</h1>
-            <div class="border border-top-0 border-start-0 border-end-0 " style='color:#d4c3dc'></div>
-        <div class="favorites-info-container" style="margin-left: 24px;">
+<div class="favorites-page">
+    <h1 class="text">My favorites</h1>
+    <div class="border border-top-0 border-start-0 border-end-0 " style='color:#d4c3dc'></div>
+    <div class="favorites-info-container">
         {{#each likes as |like|}}
-            <div class="d-flex gap-3 my-4">
-                <div class="image-community" style="background-image: url({{like.comment.user.image}})"></div>
-                <div>
-                    <h4 class="mb-1">{{like.user.username}}</h4>
-                    <p class="m-0">{{like.comment.body}} </p>
-                    <img src="{{like.comment.image}}" width="400px">
-                </div>
+        <div class="d-flex gap-3 my-4">
+            <div class="image-community" style="background-image: url({{like.comment.user.image}})">
             </div>
-            <div class="border border-top-0 border-start-0 border-end-0 py-1" ></div>
-        {{/each}}
+            <div>
+            <h4 class="mb-1">{{like.user.username}}</h4>
+            <p class="m-0">{{like.comment.body}} </p>
+            <img src="{{like.comment.image}}" width="400px">
+            </div>
         </div>
+        <div class="border border-top-0 border-start-0 border-end-0 py-1" >
+        </div>
+        
+        {{else}}
+        <div class="favorite-not">
+        <h2>You have not favorite anything yet. Give some love!</h2>
+        <div class="heart-icon">
+        <div class="heart">
+        </div>
+        </div>
+        </div>
+        {{/each}}
     </div>
 </div>
