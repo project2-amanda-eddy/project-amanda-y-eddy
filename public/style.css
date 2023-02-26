@@ -436,7 +436,10 @@ img {
  .heart::before {
   animation-name: srce;
   animation-duration: 7s;
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
    
 }
 
