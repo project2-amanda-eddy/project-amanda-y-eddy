@@ -436,7 +436,7 @@ img {
  .heart::before {
   animation-name: srce;
   animation-duration: 7s;
-  -webkit-animation-iteration-count: infinite;
+
    
 }
 
@@ -504,3 +504,10 @@ img {
 .community-comments {
   padding-top: 3%;
 }
+
+
+
+.comment-body {
+  padding-top: 2%;
+}
+
