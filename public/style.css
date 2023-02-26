@@ -436,7 +436,6 @@ img {
  .heart::before {
   animation-name: srce;
   animation-duration: 7s;
-  -webkit-animation-iteration-count: infinite;
    
 }
 
