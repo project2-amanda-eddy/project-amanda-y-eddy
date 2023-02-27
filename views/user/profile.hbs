@@ -8,7 +8,7 @@
                 <input type="file" name="image" id="image-input" class="form-control-file inputs-profile" />
                 <input type="text" name="existingImage" hidden id="hidden-img" value="{{imageUrl}}"/>
                 <label for="usarname">Username:</label>
-                <input class="text-capitalize" type="text" name="username" placeholder="choose your username" value="{{currentUser.username}}" class="inputs-profile"/>
+                <input class="text-capitalize input-username" type="text" name="username" placeholder="choose your username" value="{{currentUser.username}}"/>
             </div>
         </div>
             <button class="btn-save-image" type="submit">Submit</button>
@@ -18,11 +18,11 @@
         <div class="form-profile">
             <div class="profile-details">
                 <h4>My Details</h4>
-                <label for="gender">Gender:</label>
-                <select name="gender" id="gender-select">
-                    <option value="female">Female</option>
-                    <option value="male">Male</option>
-                </select>
+                    <label for="gender">Gender:</label>
+                    <select class="form-select" name="gender" id="gender-select">
+                        <option value="female">Female</option>
+                        <option value="male">Male</option>
+                    </select>
                 <label for="weight">Weight:</label>
                 <input placeholder="Weight in kg" value="{{profile.weight}}" type="number" class="form-control" id="weight" name="weight">
                 <label for="height">Height:</label>
@@ -30,7 +30,7 @@
                 <label for="age">Age:</label>
                 <input value="{{profile.age}}" type="number" class="form-control" id="age" name="age">
                 <label for="activity">Activity Level*:</label>
-                <select name="activity" id="activity-select">
+                <select class="form-select"name="activity" id="activity-select">
                     <option value="sedentary">Sedentary</option>
                     <option value="low-active">Low active</option>
                     <option value="active">Active</option>
@@ -39,8 +39,8 @@
 
             <div class="profile-diet-goal">
                 <h4>My Goals</h4>
-                <label for="dietGoal">Diet Goal:</label>
-                <select name="dietGoal" id="diet-goal-select">
+                <label for="dietGoal">Diet Goal:</label><br>
+                <select class="form-select" name="dietGoal" id="diet-goal-select">
                     <option value="moderate-loss">Moderate Loss</option>
                     <option value="fast-loss">Fast Loss</option>
                     <option value="gain">Gain</option>
