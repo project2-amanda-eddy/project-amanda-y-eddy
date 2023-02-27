@@ -40,69 +40,80 @@
     .then(response => {
       let { diaries, weights, profile } = response.data;
 
-      let options1 = {
-        chart: {
-          type: 'line'
-        },
-        series: [
-        {
-          name: 'Weight',
-          data: []
-        },
-        {
-          name: 'Weight Goal',
-          data: []
+      diaries = diaries.sort((a, b) => a.date > b.date ? -1 : 1);
+      console.log(diaries)
+
+      weights = weights.sort((a, b) => a.date > b.date ? 1 : -1);
+      console.log(weights)
+
+      if(weights.length > 0) {
+        let options1 = {
+          chart: {
+            type: 'line'
+          },
+          series: [
+          {
+            name: 'Weight',
+            data: []
+          },
+          {
+            name: 'Weight Goal',
+            data: []
+          }
+          ],
+          xaxis: {
+            categories: []
+          }
         }
-        ],
-        xaxis: {
-          categories: []
-        }
+
+        weights.forEach((weight, index) => {
+          if(index < 7) {
+            options1.series[0].data.push(weight.weight);
+            if(width > 600) {
+              options1.xaxis.categories.push(weight.date);
+            }
+            options1.series[1].data.push(profile.weightGoal);
+          }
+        })
+
+        let chart1 = new ApexCharts(document.querySelector("#chart1"), options1);
+        chart1.render();
       }
 
-      weights.forEach((weight, index) => {
-        if(index < 7) {
-          options1.series[0].data.push(weight.weight);
-          if(width > 600) {
-            options1.xaxis.categories.push(weight.date);
+      if(diaries.length > 0) {
+
+        let options2 = {
+          chart: {
+            type: 'line'
+          },
+          series: [
+          {
+            name: 'Calories',
+            data: []
+          },
+          {
+            name: 'Recommended Calories',
+            data: []
           }
-          options1.series[1].data.push(profile.weightGoal);
+          ],
+          xaxis: {
+            categories: []
+          }
         }
-      })
 
-      let chart1 = new ApexCharts(document.querySelector("#chart1"), options1);
-      chart1.render();
+        diaries.forEach((diary, index) => {
+          if(index < 7) {
+            options2.series[0].data.push(diary.calories);
+            if(width > 600) {
+              options2.xaxis.categories.push(diary.date);
+            }
+            options2.series[1].data.push(profile.GET);
+          }
+        })
 
-      let options2 = {
-        chart: {
-          type: 'line'
-        },
-        series: [
-        {
-          name: 'Calories',
-          data: []
-        },
-        {
-          name: 'Recommended Calories',
-          data: []
-        }
-        ],
-        xaxis: {
-          categories: []
-        }
+        let chart2 = new ApexCharts(document.querySelector("#chart2"), options2);
+        chart2.render();
       }
-
-      diaries.forEach((diary, index) => {
-        if(index < 7) {
-          options2.series[0].data.push(diary.calories);
-          if(width > 600) {
-            options2.xaxis.categories.push(diary.date);
-          }
-          options2.series[1].data.push(profile.GET);
-        }
-      })
-
-      let chart2 = new ApexCharts(document.querySelector("#chart2"), options2);
-      chart2.render();
 
     })
     .catch(err => console.log(err))

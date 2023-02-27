@@ -13,6 +13,9 @@ module.exports.dashboard = (req, res, next) => {
     .then(finalDiary => {
         Profile.findOne({ user: currentUserId })
         .then(profile => {
+            profile.recommendedCarbohydrate = (Math.round(profile.recommendedCarbohydrate * 100) / 100).toFixed(2);
+            profile.recommendedProtein = (Math.round(profile.recommendedProtein * 100) / 100).toFixed(2);
+            profile.recommendedFat = (Math.round(profile.recommendedFat * 100) / 100).toFixed(2);
             Weight.findOne({ user: currentUserId }).sort({ _id: -1 })
             .then(weight => {
                 res.render('user/dashboard', { finalDiary, profile, weight })

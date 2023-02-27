@@ -83,22 +83,22 @@
         <div class="cards-diary-nutrition-info">
             <h5>Total calories:</h5>
             <p>{{finalDiary.calories}} kcal/dia</p>
-            <p>recommended: {{profile.GET}}</p>
+            <p>recommended: <b>{{profile.GET}} kcal/dia</b></p>
         </div>
         <div class="cards-diary-nutrition-info">
             <h5>Total carbohydrates:</h5>
             <p>{{finalDiary.carbohydrates}} g/dia</p>
-            <p>recommended: {{profile.recommendedCarbohydrate}} g/dia</p>
+            <p>recommended: <b>{{profile.recommendedCarbohydrate}} g/dia</b></p>
         </div>
         <div class="cards-diary-nutrition-info">
             <h5>Total proteins:</h5>
             <p>{{finalDiary.proteins}} g/dia</p>
-            <p>recommended: {{profile.recommendedProtein}} g/dia</p>
+            <p>recommended: <b>{{profile.recommendedProtein}} g/dia</b></p>
         </div>
         <div class="cards-diary-nutrition-info">
             <h5>Total fat:</h5>
             <p>{{finalDiary.fats}} g/dia</p>
-            <p>recommended: {{profile.recommendedFat}} g/dia</p>
+            <p>recommended: <b>{{profile.recommendedFat}} g/dia</b></p>
         </div>
     </div>
 
@@ -109,7 +109,7 @@
             <div class="input-save-update-weight-profile">
                 <input placeholder="Weight in kg" value="{{weight.weight}}" type="number" class="form-control" id="currentWeight" name="currentWeight">
                 <p id="success-weight-msg" class="no-show success">Your weight has been succesfully updated.</p>
-                <button id="weight-submit-btn" type="submit">Save</button>
+                <button class="btn-save-weight" id="weight-submit-btn" type="submit">Save</button>
             </div>
         </form>
     </div>
