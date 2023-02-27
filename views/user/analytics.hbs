@@ -40,11 +40,9 @@
     .then(response => {
       let { diaries, weights, profile } = response.data;
 
-      diaries = diaries.sort((a, b) => a.date > b.date ? -1 : 1);
-      console.log(diaries)
+      diaries = diaries.sort((a, b) => a.date > b.date ? 1 : -1);
 
       weights = weights.sort((a, b) => a.date > b.date ? 1 : -1);
-      console.log(weights)
 
       if(weights.length > 0) {
         let options1 = {
